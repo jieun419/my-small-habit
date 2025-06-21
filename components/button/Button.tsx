@@ -4,7 +4,7 @@ interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "tertiary" | "positive" | "negative" | "normal";
   size?: "small" | "medium" | "large";
-  align?: "left" | "center" | "right";
+  align?: "left" | "center" | "right" | "between";
   w?: "w-full" | "w-fit";
   isIcon?: boolean;
   className?: string;
@@ -58,11 +58,13 @@ const Button: React.FC<ButtonProps> = ({
   const getAlignClass = () => {
     switch (align) {
       case "left":
-        return "justify-start";
+        return "!justify-start";
       case "center":
-        return "justify-center";
+        return "!justify-center";
       case "right":
-        return "justify-end";
+        return "!justify-end";
+      case "between":
+        return "!justify-between";
       default:
         return "justify-center";
     }
@@ -75,16 +77,24 @@ const Button: React.FC<ButtonProps> = ({
       case "w-fit":
         return "w-fit";
       default:
-        return "w-fit";
+        return "w-full";
     }
+  };
+
+  const getIconClass = () => {
+    if (isIcon) {
+      return "flex items-center justify-center gap-1";
+    }
+    return "";
   };
 
   const baseClasses = getVariantClass();
   const sizeClasses = getSizeClass();
-  const alignClasses = getAlignClass();
   const wClasses = getWClass();
+  const alignClasses = getAlignClass();
+  const iconClasses = getIconClass();
 
-  const combinedClasses = [baseClasses, sizeClasses, alignClasses, wClasses, className]
+  const combinedClasses = [baseClasses, sizeClasses, wClasses, iconClasses, alignClasses, className]
     .filter(Boolean)
     .join(" ");
 
