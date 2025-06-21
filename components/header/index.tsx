@@ -19,7 +19,7 @@ const Header = () => {
         <IconElement icon={faChevronLeft} />
       </button>
 
-      <Link href="/settings" className="font-bold">
+      <Link href="/setting" className="font-bold">
         설정
       </Link>
     </header>
