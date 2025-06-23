@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { ACCESS_TOKEN } from "./constants/auth";
 import { routes } from "./constants/path";
 
 // https://nextjs-ko.org/docs/app/building-your-application/routing/middleware
@@ -12,13 +13,13 @@ export const config = {
 const publicRoutes = ["/", "/login", "/signup"]; // 로그인 후 접근 불가
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get("access_token");
+  const token = request.cookies.get(ACCESS_TOKEN);
   const currentPath = request.nextUrl.pathname;
   const isPublic = publicRoutes.includes(currentPath);
 
   if (!token && !isPublic) {
     const url = request.nextUrl.clone();
-    url.pathname = "/login";
+    url.pathname = routes.commonPath.login;
     return NextResponse.redirect(url);
   }
 

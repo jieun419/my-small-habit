@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+import { ACCESS_TOKEN, REFRESH_TOKEN, TOKEN_TYPE } from "@/constants/auth";
 import { routes } from "@/constants/path";
 import useAuth from "@/hooks/useAuth";
 import { setUserInfoCookie } from "@/utils/auth";
@@ -16,9 +17,9 @@ const Page = () => {
       const hash = window.location.hash.substring(1); // # 제거
       const params = new URLSearchParams(hash);
 
-      const token = params.get("access_token");
-      const refresh = params.get("refresh_token");
-      const type = params.get("token_type");
+      const token = params.get(ACCESS_TOKEN);
+      const refresh = params.get(REFRESH_TOKEN);
+      const type = params.get(TOKEN_TYPE);
 
       if (token && refresh && type) {
         setUserInfoCookie({
