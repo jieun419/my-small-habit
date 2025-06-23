@@ -1,4 +1,4 @@
-import AddInfoScreen from "@/features/addInfo";
+import AddInfoScreen from "@/features/InfoAdd";
 
 const EditInfoPage = () => {
   return <AddInfoScreen />;

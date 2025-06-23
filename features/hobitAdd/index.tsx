@@ -6,7 +6,7 @@ import BaseInput from "@/components/input/baseInput";
 import CircleTitle from "@/components/title/circleTitle";
 import Title from "@/components/title/title";
 
-const AddHobitScreen = () => {
+const HobitAddScreen = () => {
   return (
     <ScreenContainer>
       <CircleTitle>
@@ -25,4 +25,4 @@ const AddHobitScreen = () => {
   );
 };
 
-export default AddHobitScreen;
+export default HobitAddScreen;
