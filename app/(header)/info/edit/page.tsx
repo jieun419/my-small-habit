@@ -1,7 +1,5 @@
-import AddInfoScreen from "@/features/InfoAdd";
-
 const EditInfoPage = () => {
-  return <AddInfoScreen />;
+  return "InfoEditScreen";
 };
 
 export default EditInfoPage;
