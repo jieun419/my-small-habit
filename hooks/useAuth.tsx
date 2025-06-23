@@ -39,6 +39,9 @@ const useAuth = () => {
     if (!userInfo.name || !userInfo.email || !userInfo.password) {
       return setErrorMsg("모든 필드를 입력해주세요.");
     }
+    if (userInfo.password.length < 8) {
+      return setErrorMsg("비밀번호는 8자 이상이어야 합니다.");
+    }
 
     const { data, error } = await handleSignUp({ uesrInfo: userInfo });
 
