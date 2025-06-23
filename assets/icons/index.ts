@@ -1,3 +1,4 @@
+import IconGoogle from "./icon-google";
 import IconMood1VerySad from "./icon-mood-1-very-sad";
 import IconMood2SlightlySad from "./icon-mood-2-slightly-sad";
 import IconMood3Neutral from "./icon-mood-3-neutral";
@@ -13,5 +14,6 @@ export {
   IconMood4SlightlyHappy,
   IconMood5VeryHappy,
   IconNotFound,
+  IconGoogle,
   ObjSplashEye,
 };
