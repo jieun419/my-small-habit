@@ -12,6 +12,6 @@ export const USER_STATUS_KEY = "user_status";
 
 export const SUPABASE_DATA_INFO = {
   USER_INFO: "user_info",
-  HOBIT: "hobit",
-  HOBIT_RECORD: "hobit_record",
+  HABIT: "habit",
+  HABIT_RECORD: "habit_record",
 };

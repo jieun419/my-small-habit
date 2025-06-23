@@ -10,8 +10,8 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "My Small Hobit",
-  description: "My Small Hobit",
+  title: "My Small Habit",
+  description: "My Small Habit",
 };
 
 export default function RootLayout({

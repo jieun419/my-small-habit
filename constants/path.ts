@@ -5,10 +5,10 @@ const commonPath = {
 };
 
 const userPath = {
-  hobit: {
-    root: "/hobit",
-    add: "/hobit/add",
-    edit: "/hobit/edit",
+  habit: {
+    root: "/habit",
+    add: "/habit/add",
+    edit: "/habit/edit",
   },
   record: {
     root: "/record",

@@ -27,7 +27,7 @@ const Page = () => {
           token_type: type,
         });
         getUserStatus();
-        router.push(routes.userPath.hobit.add);
+        router.push(routes.userPath.habit.add);
       }
     }
   }, []);

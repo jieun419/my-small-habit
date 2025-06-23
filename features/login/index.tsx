@@ -19,40 +19,6 @@ const LoginScreen = () => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
   };
-  //   e.preventDefault();
-
-  //   if (!userInfo.email || !userInfo.password) {
-  //     return setErrorMsg("이메일과 비밀번호를 입력해주세요.");
-  //   }
-
-  //   const { data, error } = await handleSignIn({ uesrInfo: userInfo });
-
-  //   if (error) {
-  //     return setErrorMsg(getAuthErrorMsg(error));
-  //   }
-
-  //   if (data) {
-  //     setUserInfoCookie({
-  //       access_token: data.session?.access_token,
-  //       refresh_token: data.session?.refresh_token,
-  //       token_type: data.session?.token_type,
-  //     });
-
-  //     setErrorMsg("");
-  //     router.push(routes.userPath.hobit.add);
-  //   }
-  // };
-
-  // const handleUserAuthLogin = async (provider: Provider) => {
-  //   const { data, error } = await handleAuthLogin(provider);
-  //   if (error) {
-  //     return setErrorMsg(getAuthErrorMsg(error));
-  //   }
-
-  //   if (data) {
-  //     router.push(routes.userPath.hobit.add);
-  //   }
-  // };
 
   return (
     <ScreenContainer>

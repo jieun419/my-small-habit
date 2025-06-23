@@ -62,7 +62,7 @@ const useAuth = () => {
 
       getUserStatus();
       resetData();
-      router.push(routes.userPath.hobit.add);
+      router.push(routes.userPath.habit.add);
     }
   };
 
@@ -89,7 +89,7 @@ const useAuth = () => {
       getUserStatus();
 
       resetData();
-      router.push(routes.userPath.hobit.add);
+      router.push(routes.userPath.habit.add);
     }
   };
 
@@ -106,7 +106,7 @@ const useAuth = () => {
     }
 
     if (data) {
-      router.push(routes.userPath.hobit.add);
+      router.push(routes.userPath.habit.add);
     }
   };
 
