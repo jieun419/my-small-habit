@@ -17,6 +17,6 @@ export const handleInsertUserInfo = async (userInfo: UserInfo) => {
  * @returns 유저 상태
  */
 export const handleGetUserStatus = async () => {
-  const { data } = await supabase.from(SUPABASE_DATA_INFO.USER_INFO).select("status").single();
+  const { data } = await supabase.from(SUPABASE_DATA_INFO.USER_INFO).select("*").single();
   return data?.status;
 };

@@ -8,6 +8,7 @@ import { USER_STATUS_KEY } from "@/constants/auth";
 import { routes } from "@/constants/path";
 import { UserInfo } from "@/types/user";
 import { getAuthErrorMsg, setUserInfoCookie } from "@/utils/auth";
+import LocalStorage from "@/utils/localStorage";
 
 /**
  * 인증 관련 훅
@@ -99,7 +100,7 @@ const useAuth = () => {
   const getUserStatus = async () => {
     const data = await handleGetUserStatus();
 
-    localStorage.setItem(USER_STATUS_KEY, data);
+    LocalStorage.setItem(USER_STATUS_KEY, data);
   };
 
   const handleUserAuthLogin = async (provider: Provider) => {

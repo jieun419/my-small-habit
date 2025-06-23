@@ -1,12 +1,13 @@
 import { AuthError } from "@supabase/supabase-js";
 import { setCookie } from "cookies-next";
 
+import { ACCESS_TOKEN, REFRESH_TOKEN, TOKEN_TYPE } from "@/constants/auth";
 import { AuthTokenInfo } from "@/types/auth";
 
 const setUserInfoCookie = async (tokenInfo: AuthTokenInfo) => {
-  setCookie("access_token", tokenInfo?.access_token || "");
-  setCookie("refresh_token", tokenInfo?.refresh_token || "");
-  setCookie("token_type", tokenInfo?.token_type || "");
+  setCookie(ACCESS_TOKEN, tokenInfo?.access_token || "");
+  setCookie(REFRESH_TOKEN, tokenInfo?.refresh_token || "");
+  setCookie(TOKEN_TYPE, tokenInfo?.token_type || "");
 };
 
 const getAuthErrorMsg = (error: AuthError) => {
