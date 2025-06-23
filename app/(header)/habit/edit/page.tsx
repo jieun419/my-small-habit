@@ -1,5 +1,5 @@
-const EditHabitPage = () => {
-  return "HabitPage";
+const HabitEditPage = () => {
+  return "HabitEditPage";
 };
 
-export default EditHabitPage;
+export default HabitEditPage;

@@ -1,5 +1,5 @@
-const EditInfoPage = () => {
+const InfoEditPage = () => {
   return "InfoEditScreen";
 };
 
-export default EditInfoPage;
+export default InfoEditPage;
