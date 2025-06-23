@@ -123,6 +123,10 @@ body {
   @apply button-base bg-gray-300 text-gray-900;
 }
 
+@utility button-white {
+  @apply button-base border border-gray-300 bg-white text-gray-900;
+}
+
 @utility button-small {
   @apply button-base rounded-[10px] px-3 py-1.5 text-xs;
 }

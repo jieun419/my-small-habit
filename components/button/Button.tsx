@@ -2,7 +2,7 @@ import React from "react";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "tertiary" | "positive" | "negative" | "normal";
+  variant?: "primary" | "secondary" | "tertiary" | "positive" | "negative" | "white" | "normal";
   size?: "small" | "medium" | "large";
   align?: "left" | "center" | "right" | "between";
   w?: "w-full" | "w-fit";
@@ -37,6 +37,8 @@ const Button: React.FC<ButtonProps> = ({
         return "button-positive";
       case "negative":
         return "button-negative";
+      case "white":
+        return "button-white";
       case "normal":
         return "button-base";
       default:
@@ -83,7 +85,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const getIconClass = () => {
     if (isIcon) {
-      return "flex items-center justify-center gap-1";
+      return "flex items-center justify-center gap-4";
     }
     return "";
   };
