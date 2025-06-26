@@ -1,33 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
-import { ACCESS_TOKEN } from "./constants/auth";
-import { routes } from "./constants/path";
-
-// https://nextjs-ko.org/docs/app/building-your-application/routing/middleware
-const allowedOrigins = ["http://localhost:3000", "https://my-small-habit.vercel.app"];
+import { updateSession } from "./lib/supabase/middleware";
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|fonts|images).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"],
 };
 
-const publicRoutes = ["/", "/login", "/signup"]; // 로그인 후 접근 불가
-
-export function middleware(request: NextRequest) {
-  const token = request.cookies.get(ACCESS_TOKEN);
-  const currentPath = request.nextUrl.pathname;
-  const isPublic = publicRoutes.includes(currentPath);
-
-  if (!token && !isPublic) {
-    const url = request.nextUrl.clone();
-    url.pathname = routes.commonPath.login;
-    return NextResponse.redirect(url);
-  }
-
-  if (token && isPublic) {
-    const url = request.nextUrl.clone();
-    url.pathname = routes.userPath.habit.add;
-    return NextResponse.redirect(url);
-  }
-
-  return NextResponse.next();
+export async function middleware(request: NextRequest) {
+  return await updateSession(request);
 }

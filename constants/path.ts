@@ -2,6 +2,10 @@ const commonPath = {
   root: "/",
   login: "/login",
   signup: "/signup",
+  auth: {
+    root: "/auth",
+    callback: "/auth/callback",
+  },
 };
 
 const userPath = {
