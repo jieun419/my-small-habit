@@ -13,7 +13,16 @@ const nextConfig: NextConfig = {
     },
   },
   // webpack 설정
-  webpack: (config) => {
+  webpack: (config, { isServer, dev }) => {
+    if (dev) {
+      // 개발 환경에서만 HMR 비활성화
+      config.watchOptions = {
+        ignored: /node_modules/,
+        poll: 1000,
+        aggregateTimeout: 300,
+      };
+    }
+
     // @ts-expect-error 타입 에러 무시
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
 

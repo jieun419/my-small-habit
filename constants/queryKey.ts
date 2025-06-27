@@ -4,16 +4,16 @@ export const queryKey = {
   },
   /* 유저 정보 */
   userInfo: {
-    key: ["user_info"],
+    key: (userId: string) => ["user_info", userId],
     status: {
-      key: ["user_info_status"],
+      key: (userId: string) => ["user_info_status", userId],
     },
   },
   /* 습관 */
   habit: {
-    key: ["habit"],
+    key: (userId: string) => ["habit", userId],
     list: {
-      key: ["habit_list"],
+      key: (userId: string) => ["habit_list", userId],
     },
     detail: {
       key: ["habit_detail"],

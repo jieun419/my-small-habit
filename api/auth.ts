@@ -1,5 +1,6 @@
 import { Provider } from "@supabase/supabase-js";
 
+import { routes } from "@/constants/path";
 import { createClient } from "@/lib/supabase/client";
 
 /**
@@ -56,7 +57,7 @@ export const handleAuthLogin = async (provider: Provider) => {
         access_type: "offline",
         prompt: "consent",
       },
-      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback`,
+      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}${routes.commonPath.auth.callback}`,
     },
   });
 
