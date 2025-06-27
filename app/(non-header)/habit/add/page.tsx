@@ -1,7 +1,12 @@
+"use client";
+
 import HabitAddScreen from "@/features/habitAdd";
+import { useGetUser } from "@/hooks/useGetUser";
 
 const HabitAddPage = () => {
-  return <HabitAddScreen />;
+  const { user } = useGetUser();
+
+  return <HabitAddScreen userId={user?.id} />;
 };
 
 export default HabitAddPage;

@@ -1,5 +1,14 @@
-const ScreenContainer = ({ children }: { children: React.ReactNode }) => {
-  return <div className="flex w-full flex-col items-center">{children}</div>;
+interface ScreenContainerProps {
+  children: React.ReactNode;
+  isBottomButton?: boolean;
+}
+
+const ScreenContainer = ({ children, isBottomButton = false }: ScreenContainerProps) => {
+  return (
+    <div className={`flex w-full flex-col items-center ${isBottomButton ? "pb-[100px]" : ""}`}>
+      {children}
+    </div>
+  );
 };
 
 export default ScreenContainer;
