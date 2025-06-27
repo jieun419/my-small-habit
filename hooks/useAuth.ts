@@ -3,11 +3,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { handleAuthLogin, handleSignIn, handleSignUp } from "@/api/auth";
-import { handleGetUserStatus, handleInsertUserInfo } from "@/api/user";
+import { getSupabaseUser, getUserStatus } from "@/api/user";
 import { USER_STATUS_KEY } from "@/constants/auth";
 import { routes } from "@/constants/path";
-import { UserInfo } from "@/types/user";
-import { getAuthErrorMsg, setUserInfoCookie } from "@/utils/auth";
+import { getAuthErrorMsg } from "@/utils/auth";
 import LocalStorage from "@/utils/localStorage";
 
 /**
@@ -34,6 +33,21 @@ const useAuth = () => {
     setErrorMsg("");
   };
 
+  const getUserData = async () => {
+    const user = await getSupabaseUser();
+    return user;
+  };
+
+  const saveUserStatus = async () => {
+    const data = await getUserStatus();
+
+    LocalStorage.setItem(USER_STATUS_KEY, data);
+  };
+
+  /**
+   * 회원가입
+   * @param e 회원가입 폼 이벤트
+   */
   const handleUserSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -51,25 +65,16 @@ const useAuth = () => {
     }
 
     if (data) {
-      insertUserInfo({
-        id: data.user?.id,
-        email: data.user?.email,
-        name: data.user?.user_metadata.name,
-        created_at: data.user?.created_at,
-      });
-
-      setUserInfoCookie({
-        access_token: data.session?.access_token,
-        refresh_token: data.session?.refresh_token,
-        token_type: data.session?.token_type,
-      });
-
-      getUserStatus();
+      router.push(routes.commonPath.auth.callback);
+      saveUserStatus();
       resetData();
-      router.push(routes.userPath.habit.add);
     }
   };
 
+  /**
+   * 로그인
+   * @param e 로그인 폼 이벤트
+   */
   const handleUserLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -84,39 +89,24 @@ const useAuth = () => {
     }
 
     if (data) {
-      setUserInfoCookie({
-        access_token: data.session?.access_token,
-        refresh_token: data.session?.refresh_token,
-        token_type: data.session?.token_type,
-      });
-
-      getUserStatus();
-
+      router.push(routes.commonPath.auth.callback);
+      saveUserStatus();
       resetData();
-      router.push(routes.userPath.habit.add);
     }
   };
 
-  const getUserStatus = async () => {
-    const data = await handleGetUserStatus();
-
-    LocalStorage.setItem(USER_STATUS_KEY, data);
-  };
-
+  /**
+   * 소셜 로그인
+   * @param provider 소셜 로그인 프로바이더
+   */
   const handleUserAuthLogin = async (provider: Provider) => {
     const { data, error } = await handleAuthLogin(provider);
     if (error) {
       return setErrorMsg(getAuthErrorMsg(error));
     }
-
     if (data) {
-      router.push(routes.userPath.habit.add);
+      saveUserStatus();
     }
-  };
-
-  const insertUserInfo = async (userInfo: UserInfo) => {
-    if (!userInfo) return;
-    await handleInsertUserInfo(userInfo);
   };
 
   return {
@@ -126,7 +116,8 @@ const useAuth = () => {
     handleUserSignUp,
     handleUserLogin,
     handleUserAuthLogin,
-    getUserStatus,
+    saveUserStatus,
+    getUserData,
   };
 };
 

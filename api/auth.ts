@@ -1,6 +1,7 @@
 import { Provider } from "@supabase/supabase-js";
 
-import supabase from "@/lib/supabase";
+import { routes } from "@/constants/path";
+import { createClient } from "@/lib/supabase/client";
 
 /**
  * 회원가입
@@ -12,7 +13,7 @@ export const handleSignUp = async ({
 }: {
   uesrInfo: { email: string; password: string; name: string };
 }) => {
-  const { data, error } = await supabase.auth.signUp({
+  const { data, error } = await createClient().auth.signUp({
     email: uesrInfo.email,
     password: uesrInfo.password,
     options: {
@@ -35,7 +36,7 @@ export const handleSignIn = async ({
 }: {
   uesrInfo: { email: string; password: string };
 }) => {
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await createClient().auth.signInWithPassword({
     email: uesrInfo.email,
     password: uesrInfo.password,
   });
@@ -49,15 +50,21 @@ export const handleSignIn = async ({
  * @returns 소셜 로그인 플랫폼
  */
 export const handleAuthLogin = async (provider: Provider) => {
-  const { data, error } = await supabase.auth.signInWithOAuth({
+  const { data, error } = await createClient().auth.signInWithOAuth({
     provider: provider,
     options: {
       queryParams: {
         access_type: "offline",
         prompt: "consent",
       },
+      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}${routes.commonPath.auth.callback}`,
     },
   });
 
   return { data, error };
+};
+
+export const getSupabase = async () => {
+  const { data } = await createClient().auth.getSession();
+  return data;
 };

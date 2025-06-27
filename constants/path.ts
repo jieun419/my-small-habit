@@ -2,6 +2,10 @@ const commonPath = {
   root: "/",
   login: "/login",
   signup: "/signup",
+  auth: {
+    root: "/auth",
+    callback: "/auth/callback",
+  },
 };
 
 const userPath = {
@@ -12,7 +16,9 @@ const userPath = {
   },
   record: {
     root: "/record",
-    add: "/record/add",
+    step1: "/record/step1",
+    step2: "/record/step2",
+    step3: "/record/step3",
   },
   report: {
     root: "/report",
