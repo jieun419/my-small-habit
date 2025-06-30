@@ -1,8 +1,6 @@
 import { Button } from "@/components/button";
-import AddButton from "@/components/button/addButton";
 import ButttonContain from "@/components/button/butttonContain";
 import ScreenContainer from "@/components/container/screenContainer";
-import BaseInput from "@/components/input/baseInput";
 import CircleTitle from "@/components/title/circleTitle";
 import Title from "@/components/title/title";
 
@@ -33,16 +31,14 @@ const RecordStep1Screen = () => {
           <Button variant="normal" className="bg-gray-50 text-gray-900" align="left" size="medium">
             30분 독서하기
           </Button>
-
-          <AddButton />
         </div>
       </section>
 
       <ButttonContain isFixed>
-        <Button variant="negative" size="medium">
+        <Button variant="tertiary" size="medium">
           나중에
         </Button>
-        <Button variant="positive" size="medium">
+        <Button variant="secondary" size="medium">
           다음
         </Button>
       </ButttonContain>
