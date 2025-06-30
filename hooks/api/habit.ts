@@ -3,6 +3,7 @@ import { useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-q
 import { deleteHabit, getHabitList, InsertHabit, updateHabit } from "@/api/habit";
 import { queryKey } from "@/constants/queryKey";
 import { createClient } from "@/lib/supabase/client";
+import { toast } from "@/utils/toast";
 
 const supabase = await createClient();
 const {
@@ -38,7 +39,8 @@ export const useInsertHabit = () => {
       queryClient.invalidateQueries({ queryKey: queryKey.habit.list.key(user?.id || "") });
     },
     onError: (error) => {
-      throw console.error(error);
+      toast("의도치 않는 에러가 발생! 다시 시도해 주세요.");
+      console.error(error);
     },
   });
 
@@ -64,6 +66,7 @@ export const useUpdateHabit = () => {
       queryClient.invalidateQueries({ queryKey: queryKey.habit.list.key(user?.id || "") });
     },
     onError: (error) => {
+      toast("의도치 않는 에러가 발생! 다시 시도해 주세요.");
       console.error(error);
     },
   });
@@ -89,6 +92,7 @@ export const useDeleteHabit = () => {
       queryClient.invalidateQueries({ queryKey: queryKey.habit.list.key(user?.id || "") });
     },
     onError: (error) => {
+      toast("의도치 않는 에러가 발생! 다시 시도해 주세요.");
       console.error(error);
     },
   });
