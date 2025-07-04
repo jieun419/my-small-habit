@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 
 import AddButton from "@/components/button/addButton";
 import IconElement from "@/components/icon/iconElement";
-import { toast } from "@/utils/toast";
 
 import { HabitRecord } from "../..";
 
