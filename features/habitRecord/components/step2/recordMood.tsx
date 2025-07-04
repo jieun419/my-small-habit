@@ -1,7 +1,6 @@
 "use client";
 
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 import {
   IconMood1VerySad,
@@ -11,39 +10,43 @@ import {
   IconMood5VeryHappy,
 } from "@/assets/icons";
 import IconElement from "@/components/icon/iconElement";
+import { HabitMood } from "@/types/habit";
 
-const RecordMood = () => {
-  const [selectMood, setSelectMood] = useState<string | null>(null);
+import { HabitRecord } from "../..";
 
+interface RecordMoodProps {
+  currentMood: HabitMood;
+  upDateHabitRecord: (habitRecord: Partial<HabitRecord>) => void;
+}
+
+const RecordMood = ({ currentMood, upDateHabitRecord }: RecordMoodProps) => {
   const moodItems = [
     {
       id: 1,
-      name: "mood1",
+      name: "verySad",
       icon: <IconMood1VerySad />,
     },
     {
       id: 2,
-      name: "mood2",
+      name: "slightlySad",
       icon: <IconMood2SlightlySad />,
     },
     {
       id: 3,
-      name: "mood3",
+      name: "neutral",
       icon: <IconMood3Neutral />,
     },
     {
       id: 4,
-      name: "mood4",
+      name: "slightlyHappy",
       icon: <IconMood4SlightlyHappy />,
     },
     {
       id: 5,
-      name: "mood5",
+      name: "veryHappy",
       icon: <IconMood5VeryHappy />,
     },
   ];
-
-  console.log(selectMood);
 
   return (
     <div className="flex w-full max-w-1/2 items-center justify-center gap-5">
@@ -51,9 +54,9 @@ const RecordMood = () => {
         <div
           key={item.name}
           className="flex flex-col items-center gap-2"
-          onClick={() => setSelectMood(item.name)}>
+          onClick={() => upDateHabitRecord({ mood: item.name as HabitMood })}>
           <div
-            data-checked={selectMood === item.name}
+            data-checked={currentMood === item.name}
             className="group flex cursor-pointer flex-col items-center gap-2 rounded-full">
             {item.icon}
             <div className="group-data-[checked=true]:bg-primary flex aspect-square h-[15px] w-[15px] items-center justify-center rounded-full bg-gray-100">

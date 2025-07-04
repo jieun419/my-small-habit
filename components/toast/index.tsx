@@ -17,19 +17,18 @@ const Toaster = () => {
 
       setTimeout(() => {
         setIsVisible(false);
-        setMsg("");
-      }, 1500);
+      }, 2000);
     });
   }, []);
 
   const getPositionClass = () => {
     switch (position) {
       case "bottom":
-        return `bottom-20 ${isVisible ? "translate-y-0 " : "translate-y-40"}`;
+        return `bottom-5 ${isVisible ? "" : "translate-y-40"}`;
       case "top":
-        return `top-20 ${isVisible ? "translate-y-0 " : "-translate-y-40"}`;
+        return `top-5 ${isVisible ? "" : "-translate-y-40"}`;
       default:
-        return `bottom-20 ${isVisible ? "translate-y-0 " : "translate-y-40"}`;
+        return `bottom-5 ${isVisible ? "" : "translate-y-40"}`;
     }
   };
 
@@ -38,8 +37,9 @@ const Toaster = () => {
   const combinedClasses = [positionClasses].filter(Boolean).join(" ");
 
   return (
-    <div className={`px-md fixed z-1 w-full transition-all duration-300 ${combinedClasses} `}>
-      <div className="flex w-full items-center justify-center rounded-md bg-black/55 px-3 py-4 text-sm text-white">
+    <div
+      className={`px-md fixed z-1 w-full transition-all duration-300 ${isVisible ? "translate-y-0 opacity-100" : "opacity-0"} ${combinedClasses} `}>
+      <div className="flex w-full items-center justify-center rounded-md bg-black/55 px-3 py-3 text-sm text-white">
         {msg}
       </div>
     </div>
