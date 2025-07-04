@@ -11,7 +11,7 @@ const {
 } = await supabase.auth.getUser();
 
 /**
- * supabase 유저 정보 조회
+ * GET supabase 유저 정보 조회
  * @returns 유저 정보
  */
 export const useGetUser = () => {
@@ -27,7 +27,7 @@ export const useGetUser = () => {
 };
 
 /**
- * 유저 상태 조회
+ * GET 유저 상태 조회
  * @returns 유저 상태
  */
 export const useGetUserInfoStatus = () => {
