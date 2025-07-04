@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/client";
 import { UserInfo } from "@/types/user";
 
 /**
- * supabase 유저 정보 조회
+ * GET supabase 유저 정보 조회
  * @returns 유저 정보
  */
 export const getSupabaseUser = async () => {
@@ -12,7 +12,7 @@ export const getSupabaseUser = async () => {
 };
 
 /**
- * 유저 정보 삽입
+ * INSERT 유저 정보 삽입
  * @param userInfo 유저 정보
  * @returns 유저 정보
  */
@@ -22,7 +22,7 @@ export const insertUserInfo = async (userInfo: UserInfo) => {
 };
 
 /**
- * 유저 상태 조회
+ * GET 유저 상태 조회
  * @returns 유저 상태
  */
 export const getUserStatus = async () => {

@@ -1,11 +1,16 @@
+import { PostgrestError } from "@supabase/supabase-js";
+
 import { SUPABASE_DATA_INFO } from "@/constants/auth";
 import { createClient } from "@/lib/supabase/client";
+import { Habit, HabitRecordInsert } from "@/types/habit";
 
 /**
- * 습관 조회
+ * GET 습관 조회
  * @returns 습관
  */
-export const getHabitList = async (userId: string) => {
+export const getHabitList = async (
+  userId: string,
+): Promise<{ data: Habit[] | null; error: PostgrestError | null }> => {
   const { data, error } = await createClient()
     .from(SUPABASE_DATA_INFO.HABIT)
     .select("*")
@@ -15,8 +20,8 @@ export const getHabitList = async (userId: string) => {
   return { data, error };
 };
 
-/**s
- * 습관 삽입
+/**
+ * INSERT 습관 삽입
  * @param habit 습관
  * @returns 습관
  */
@@ -28,7 +33,7 @@ export const InsertHabit = async (habit: { user_id?: string; name: string }) => 
 };
 
 /**
- * 습관 수정
+ * UPDATE 습관 수정
  * @param habit 습관
  * @returns 습관
  */
@@ -43,12 +48,46 @@ export const updateHabit = async (habit: { name: string; id: string }) => {
 };
 
 /**
- * 습관 삭제
+ * DELETE 습관 삭제
  * @param habit 습관
  * @returns 습관
  */
 export const deleteHabit = async (habit: { id: string }) => {
   const { error } = await createClient().from(SUPABASE_DATA_INFO.HABIT).delete().eq("id", habit.id);
+
+  if (error) return { error };
+  return { data: true };
+};
+
+/**
+ * GET 습관 기록 목록 조회
+ * @param userId
+ * @returns 습관 기록 목록
+ */
+export const getHabitRecord = async (userId: string) => {
+  const { data, error } = await createClient()
+    .from(SUPABASE_DATA_INFO.HABIT_RECORD)
+    .select("*")
+    .eq("user_id", userId);
+
+  return { data, error };
+};
+
+/**
+ * INSERT 습관 기록
+ * @param record 습관 기록
+ * @returns 습관 기록
+ */
+export const InsertHabitRecord = async ({
+  record,
+  userId,
+}: {
+  record: HabitRecordInsert;
+  userId: string;
+}) => {
+  const { error } = await createClient()
+    .from(SUPABASE_DATA_INFO.HABIT_RECORD)
+    .insert({ ...record, user_id: userId });
 
   if (error) return { error };
   return { data: true };

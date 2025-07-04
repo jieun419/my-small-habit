@@ -7,7 +7,7 @@ import CircleTitle from "@/components/title/circleTitle";
 import SubTitle from "@/components/title/subTitle";
 import Title from "@/components/title/title";
 
-const RecordStep3Screen = () => {
+const HabitRecordResultScreen = () => {
   return (
     <ScreenContainer>
       <div className="absolute top-0 left-0 -z-1 h-[60%] w-full bg-gray-900 pb-10" />
@@ -40,4 +40,4 @@ const RecordStep3Screen = () => {
   );
 };
 
-export default RecordStep3Screen;
+export default HabitRecordResultScreen;

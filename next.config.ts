@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // TurboPack 설정
+  images: {
+    domains: ["openweathermap.com"],
+  },
   experimental: {
     turbo: {
       rules: {

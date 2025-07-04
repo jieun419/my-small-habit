@@ -10,6 +10,7 @@ import CircleTitle from "@/components/title/circleTitle";
 import Title from "@/components/title/title";
 import { routes } from "@/constants/path";
 import { useDeleteHabit, useGetHabitList, useInsertHabit, useUpdateHabit } from "@/hooks/api/habit";
+import usePageMove from "@/hooks/usePageMove";
 
 import HobitBox from "./hobitBox";
 import HabitCreateForm from "./hobitCreateForm";
@@ -19,16 +20,15 @@ interface HabitAddScreenProps {
 }
 
 const HabitAddScreen = ({ userId }: HabitAddScreenProps) => {
-  const router = useRouter();
-
   const [createHabit, setCreateHabit] = useState("");
   const [editHabits, setEditHabits] = useState<{ [id: string]: string }>({});
   const [seletcHabitId, setSeletcHabitId] = useState("");
 
   const [isEdit, setIsEdit] = useState(false);
 
-  const { data: habitList = [] } = useGetHabitList(userId || "");
+  const { handlePageMove } = usePageMove();
 
+  const { data: habitList = [] } = useGetHabitList(userId || "");
   const { mutateInsertHabit } = useInsertHabit();
   const { mutateUpdateHabit } = useUpdateHabit();
   const { mutateDeleteHabit } = useDeleteHabit();
@@ -122,7 +122,11 @@ const HabitAddScreen = ({ userId }: HabitAddScreenProps) => {
       </div>
 
       <ButttonContain isFixed>
-        <Button variant="secondary" onClick={() => router.replace(routes.userPath.record.step1)}>
+        <Button
+          variant="secondary"
+          onClick={() =>
+            handlePageMove({ path: routes.userPath.habit.record.root("1"), type: "replace" })
+          }>
           오늘 습관 기록하기
         </Button>
       </ButttonContain>

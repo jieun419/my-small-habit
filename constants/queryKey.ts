@@ -15,6 +15,7 @@ export const queryKey = {
     list: {
       key: (userId: string) => ["habit_list", userId],
     },
+    record: ["habit_record"],
     detail: {
       key: ["habit_detail"],
     },

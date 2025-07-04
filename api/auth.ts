@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 
 /**
  * 회원가입
- * @param param0 유저 정보
+ * @param uesrInfo 유저 정보
  * @returns 유저 정보
  */
 export const handleSignUp = async ({
@@ -28,7 +28,7 @@ export const handleSignUp = async ({
 
 /**
  * 로그인
- * @param param0 유저 정보
+ * @param uesrInfo 유저 정보
  * @returns 유저 정보
  */
 export const handleSignIn = async ({

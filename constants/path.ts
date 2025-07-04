@@ -13,12 +13,10 @@ const userPath = {
     root: "/habit",
     add: "/habit/add",
     edit: "/habit/edit",
-  },
-  record: {
-    root: "/record",
-    step1: "/record/step1",
-    step2: "/record/step2",
-    step3: "/record/step3",
+    record: {
+      root: (step?: string) => `/habit/record${step ? `?step=${step}` : ""}`,
+      result: "/habit/record/result",
+    },
   },
   report: {
     root: "/report",
