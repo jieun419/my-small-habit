@@ -46,20 +46,16 @@ const HabitRecordScreen = ({ userId }: HabitRecordScreenProps) => {
     if (!habitRecord.mood) return toast("기분을 선택해 주세요.");
     if (!habitRecord.retrospectText) return toast("회고를 작성해 주세요.");
 
-    const record = {
-      done_habits: habitRecord.habits,
-      mood: habitRecord.mood,
-      retrospect_text: habitRecord.retrospectText ?? "",
-      retrospect_image_url: habitRecord.retrospectFiles ?? null,
-      is_done: true,
-    };
-
-    console.log(record);
-
-    // mutateUploadHabitRecord({
-    //   record: record,
-    //   userId,
-    // });
+    mutateUploadHabitRecord({
+      record: {
+        done_habits: habitRecord.habits,
+        mood: habitRecord.mood,
+        retrospect_text: habitRecord.retrospectText ?? "",
+        retrospect_image_url: habitRecord.retrospectFiles ?? null,
+        is_done: true,
+      },
+      userId,
+    });
   };
 
   useLayoutEffect(() => {
