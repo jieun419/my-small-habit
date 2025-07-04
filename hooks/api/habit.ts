@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 import {
   deleteHabit,
@@ -138,4 +139,27 @@ export const useUploadHabitRecord = () => {
     isUploadHabitRecordError: isError,
     isUploadHabitRecordSuccess: isSuccess,
   };
+};
+
+/**
+ * GET 날씨 조회
+ * @returns 날씨 아이콘
+ */
+export const useGetWeather = () => {
+  const [city, setCity] = useState("Seoul");
+  const apiKey = process.env.NEXT_PUBLIC_WEATHER_KEY;
+
+  return useSuspenseQuery({
+    queryKey: ["weather"],
+    queryFn: async () => {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
+      );
+      const data = await response.json();
+
+      if (data) {
+        return `https://openweathermap.com/img/wn/${data.weather?.[0]?.icon}.png`;
+      }
+    },
+  });
 };
