@@ -4,17 +4,16 @@ import { useState } from "react";
 import {
   deleteHabit,
   getHabitList,
-  InsertHabit,
-  InsertHabitRecord,
+  insertHabit,
+  insertHabitRecord,
   updateHabit,
 } from "@/api/habit";
-import { routes } from "@/constants/path";
 import { queryKey } from "@/constants/queryKey";
 import { createClient } from "@/lib/supabase/client";
 import { HabitRecordInsert } from "@/types/habit";
 import { toast } from "@/utils/toast";
 
-import usePageMove from "../usePageMove";
+import { useInserReportDayEmpty } from "./report";
 
 const supabase = await createClient();
 const {
@@ -44,7 +43,7 @@ export const useInsertHabit = () => {
   const queryClient = useQueryClient();
 
   const { mutate, isError, isSuccess } = useMutation({
-    mutationFn: async (habit: { user_id?: string; name: string }) => await InsertHabit(habit),
+    mutationFn: async (habit: { user_id?: string; name: string }) => await insertHabit(habit),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKey.habit.key(user?.id || "") });
       queryClient.invalidateQueries({ queryKey: queryKey.habit.list.key(user?.id || "") });
@@ -120,13 +119,20 @@ export const useDeleteHabit = () => {
  * @returns 습관 기록
  */
 export const useUploadHabitRecord = () => {
-  const { handlePageMove } = usePageMove();
+  const { mutateReportDayEmpty } = useInserReportDayEmpty();
 
   const { mutate, isError, isSuccess } = useMutation({
     mutationFn: async ({ record, userId }: { record: HabitRecordInsert; userId: string }) =>
-      await InsertHabitRecord({ record, userId }),
-    onSuccess: () => {
-      handlePageMove({ path: routes.userPath.habit.record.result, type: "replace" });
+      await insertHabitRecord({ record, userId }),
+    onSuccess: (data) => {
+      // report day empty 데이터 생성
+      if (data.data) {
+        mutateReportDayEmpty({
+          userId: data.data?.user_id ?? "",
+          type: "day",
+          habitRecord: data.data,
+        });
+      }
     },
     onError: (error) => {
       toast("의도치 않는 에러가 발생! 다시 시도해 주세요.");

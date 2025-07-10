@@ -9,6 +9,9 @@ const commonPath = {
 };
 
 const userPath = {
+  mypage: {
+    root: "/mypage",
+  },
   habit: {
     root: "/habit",
     add: "/habit/add",
@@ -19,10 +22,10 @@ const userPath = {
     },
   },
   report: {
-    root: "/report",
-    weekly: "/report/weekly",
-    monthly: "/report/monthly",
-    yearly: "/report/yearly",
+    root: `/report`,
+    day: (report_id: string) => `/report/${report_id}/day`,
+    month: (report_id: string) => `/report/${report_id}/month`,
+    year: (report_id: string) => `/report/${report_id}/year`,
   },
   setting: {
     root: "/setting",

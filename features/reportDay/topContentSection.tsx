@@ -1,15 +1,11 @@
 import { IconMood5VeryHappy } from "@/assets/icons";
-import { Button } from "@/components/button";
-import ButttonContain from "@/components/button/butttonContain";
-import ReportContainer from "@/components/container/reportContainer";
-import ScreenContainer from "@/components/container/screenContainer";
 import CircleTitle from "@/components/title/circleTitle";
 import SubTitle from "@/components/title/subTitle";
 import Title from "@/components/title/title";
 
-const HabitRecordResultScreen = () => {
+const TopContentSection = () => {
   return (
-    <ScreenContainer>
+    <>
       <div className="absolute top-0 left-0 -z-1 h-[60%] w-full bg-gray-900 pb-10" />
       <div className="pb-sm flex w-full flex-col items-center">
         <CircleTitle>
@@ -25,19 +21,8 @@ const HabitRecordResultScreen = () => {
           </SubTitle>
         </div>
       </div>
-
-      <ReportContainer>ㅇㅇㅇ</ReportContainer>
-
-      <ButttonContain isColumn>
-        <Button variant="secondary" size="medium">
-          확인
-        </Button>
-        <Button variant="tertiary" size="medium">
-          사진으로 저장
-        </Button>
-      </ButttonContain>
-    </ScreenContainer>
+    </>
   );
 };
 
-export default HabitRecordResultScreen;
+export default TopContentSection;

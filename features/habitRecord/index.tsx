@@ -6,7 +6,7 @@ import { useLayoutEffect, useState } from "react";
 import { routes } from "@/constants/path";
 import { useUploadHabitRecord } from "@/hooks/api/habit";
 import usePageMove from "@/hooks/usePageMove";
-import { Habit, HabitMood, HabitRecordInsert } from "@/types/habit";
+import { Habit, HabitMood } from "@/types/habit";
 import { toast } from "@/utils/toast";
 
 import RecordStep1 from "./recordStep1";
@@ -46,6 +46,7 @@ const HabitRecordScreen = ({ userId }: HabitRecordScreenProps) => {
     if (!habitRecord.mood) return toast("기분을 선택해 주세요.");
     if (!habitRecord.retrospectText) return toast("회고를 작성해 주세요.");
 
+    // 습관 기록
     mutateUploadHabitRecord({
       record: {
         done_habits: habitRecord.habits,

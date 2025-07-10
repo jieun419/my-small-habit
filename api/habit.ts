@@ -1,8 +1,8 @@
-import { PostgrestError } from "@supabase/supabase-js";
+import { PostgrestError, QueryError } from "@supabase/supabase-js";
 
 import { SUPABASE_DATA_INFO } from "@/constants/auth";
 import { createClient } from "@/lib/supabase/client";
-import { Habit, HabitRecordInsert } from "@/types/habit";
+import { Habit, HabitRecord, HabitRecordInsert } from "@/types/habit";
 
 /**
  * GET 습관 조회
@@ -25,7 +25,7 @@ export const getHabitList = async (
  * @param habit 습관
  * @returns 습관
  */
-export const InsertHabit = async (habit: { user_id?: string; name: string }) => {
+export const insertHabit = async (habit: { user_id?: string; name: string }) => {
   const { error } = await createClient().from(SUPABASE_DATA_INFO.HABIT).insert(habit);
 
   if (error) return { error };
@@ -78,17 +78,17 @@ export const getHabitRecord = async (userId: string) => {
  * @param record 습관 기록
  * @returns 습관 기록
  */
-export const InsertHabitRecord = async ({
+export const insertHabitRecord = async ({
   record,
   userId,
 }: {
   record: HabitRecordInsert;
   userId: string;
-}) => {
-  const { error } = await createClient()
+}): Promise<{ data: HabitRecord | null; error: QueryError | null }> => {
+  const { data, error } = await createClient()
     .from(SUPABASE_DATA_INFO.HABIT_RECORD)
-    .insert({ ...record, user_id: userId });
+    .insert({ ...record, user_id: userId })
+    .select("*"); // post와 동시에 데이터 가져오기
 
-  if (error) return { error };
-  return { data: true };
+  return { data: data?.[0] ?? null, error };
 };
