@@ -3,6 +3,7 @@
 import { Button } from "@/components/button";
 import ButttonContain from "@/components/button/butttonContain";
 import ScreenContainer from "@/components/container/screenContainer";
+import FullScreenLoading from "@/components/loading/fullScreenLoading";
 import CircleTitle from "@/components/title/circleTitle";
 import SubTitle from "@/components/title/subTitle";
 import Title from "@/components/title/title";
