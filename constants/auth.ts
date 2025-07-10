@@ -14,4 +14,5 @@ export const SUPABASE_DATA_INFO = {
   USER_INFO: "user_info",
   HABIT: "habit",
   HABIT_RECORD: "habit_record",
+  REPORT: "report",
 };
