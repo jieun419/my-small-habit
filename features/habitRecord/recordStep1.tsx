@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/button";
@@ -11,7 +10,6 @@ import Title from "@/components/title/title";
 import { routes } from "@/constants/path";
 import { useGetHabitList } from "@/hooks/api/habit";
 import usePageMove from "@/hooks/usePageMove";
-import { Habit } from "@/types/habit";
 import { toast } from "@/utils/toast";
 
 import CurrentDateWithWeather from "./components/step1/currentDateWithWeather";
@@ -21,10 +19,18 @@ import { HabitRecord } from ".";
 interface RecordStep1Props {
   userId?: string;
   habitRecord: HabitRecord;
+  uploadDate: string;
   upDateHabitRecord: (HabitRecord: Partial<HabitRecord>) => void;
+  handleChangeStep: (step: "step1" | "step2") => void;
 }
 
-const RecordStep1 = ({ userId, habitRecord, upDateHabitRecord }: RecordStep1Props) => {
+const RecordStep1 = ({
+  userId,
+  habitRecord,
+  uploadDate,
+  upDateHabitRecord,
+  handleChangeStep,
+}: RecordStep1Props) => {
   const [colorMap, setColorMap] = useState<string[]>([]);
 
   const { handlePageMove } = usePageMove();
@@ -42,8 +48,8 @@ const RecordStep1 = ({ userId, habitRecord, upDateHabitRecord }: RecordStep1Prop
 
   const handleGotoStep2 = () => {
     if (habitRecord.habits.length === 0) return toast("완료 된 습관을 체크해 주세요!");
-
-    handlePageMove({ path: routes.userPath.habit.record.root("2") });
+    handleChangeStep("step2");
+    // handlePageMove({ path: routes.userPath.habit.record.root(uploadDate, "2") });
   };
 
   useEffect(() => {
@@ -92,7 +98,7 @@ const RecordStep1 = ({ userId, habitRecord, upDateHabitRecord }: RecordStep1Prop
         <Button
           variant="tertiary"
           size="medium"
-          onClick={() => handlePageMove({ path: routes.userPath.habit.root, type: "refresh" })}>
+          onClick={() => handlePageMove({ path: routes.userPath.mypage.root })}>
           나중에
         </Button>
         <Button variant="secondary" size="medium" onClick={handleGotoStep2}>

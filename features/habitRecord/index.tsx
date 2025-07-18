@@ -1,11 +1,8 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 
-import { routes } from "@/constants/path";
 import { useUploadHabitRecord } from "@/hooks/api/habit";
-import usePageMove from "@/hooks/usePageMove";
 import { Habit, HabitMood } from "@/types/habit";
 import { toast } from "@/utils/toast";
 
@@ -14,6 +11,7 @@ import RecordStep2 from "./recordStep2";
 
 interface HabitRecordScreenProps {
   userId?: string;
+  uploadDate: string;
 }
 
 export interface HabitRecord {
@@ -23,11 +21,10 @@ export interface HabitRecord {
   retrospectText?: string;
 }
 
-const HabitRecordScreen = ({ userId }: HabitRecordScreenProps) => {
-  const prams = useSearchParams();
-  const { handlePageMove } = usePageMove();
+const HabitRecordScreen = ({ userId, uploadDate }: HabitRecordScreenProps) => {
   const { mutateUploadHabitRecord } = useUploadHabitRecord();
-  const currentStep = prams.get("step");
+
+  const [step, setStep] = useState<"step1" | "step2">("step1");
 
   const [habitRecord, setHabitRecord] = useState<HabitRecord>({
     habits: [],
@@ -35,6 +32,10 @@ const HabitRecordScreen = ({ userId }: HabitRecordScreenProps) => {
     retrospectFiles: [],
     retrospectText: "",
   });
+
+  const handleChangeStep = (step: "step1" | "step2") => {
+    setStep(step);
+  };
 
   const upDateHabitRecord = (record: Partial<HabitRecord>) => {
     setHabitRecord((prevRecord) => ({ ...prevRecord, ...record }));
@@ -54,31 +55,29 @@ const HabitRecordScreen = ({ userId }: HabitRecordScreenProps) => {
         retrospect_text: habitRecord.retrospectText ?? "",
         retrospect_image_url: habitRecord.retrospectFiles ?? null,
         is_done: true,
+        upload_date: uploadDate as string,
       },
       userId,
     });
   };
 
-  useLayoutEffect(() => {
-    if (habitRecord.habits.length <= 0) {
-      handlePageMove({ path: routes.userPath.habit.record.root("1"), type: "replace" });
-    }
-  }, []);
-
   return (
     <>
-      {currentStep === "1" && (
+      {step === "step1" && (
         <RecordStep1
           userId={userId}
           habitRecord={habitRecord}
+          uploadDate={uploadDate}
           upDateHabitRecord={upDateHabitRecord}
+          handleChangeStep={handleChangeStep}
         />
       )}
-      {currentStep === "2" && (
+      {step === "step2" && (
         <RecordStep2
           habitRecord={habitRecord}
           upDateHabitRecord={upDateHabitRecord}
           uploadHabitRecord={uploadHabitRecord}
+          handleChangeStep={handleChangeStep}
         />
       )}
     </>
