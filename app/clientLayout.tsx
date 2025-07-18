@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Suspense } from "react";
 
 import Toaster from "@/components/toast";
@@ -12,6 +13,7 @@ const ClientLayout = ({ children }: { children: React.ReactNode }) => {
         {children}
         <Toaster />
       </Suspense>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryProvider>
   );
 };

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 
-import { Noto_Sans_KR } from "next/font/google";
+import { Roboto } from "next/font/google";
 
 import ClientLayout from "./clientLayout";
 
 import "@/styles/globals.css";
 
-const notoSansKR = Noto_Sans_KR({
-  variable: "--font-noto-sans-kr",
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html>
-      <body className={`${notoSansKR.variable} antialiased`}>
+      <body className={` ${roboto.className} sans antialiased`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
