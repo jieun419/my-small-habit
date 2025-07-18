@@ -2,7 +2,7 @@ import { ReportType } from "@/types/report";
 
 export const queryKey = {
   user: {
-    key: ["user"],
+    key: (userId: string) => ["user", userId],
   },
   /* 유저 정보 */
   userInfo: {
@@ -35,7 +35,7 @@ export const queryKey = {
     month: (reportId: string) => ["report_month", reportId],
     year: (reportId: string) => ["report_year", reportId],
     list: {
-      key: ["report_list"],
+      month: (year: string, month: string) => ["report_list", year, month],
     },
     generate: (reportId: string, type: ReportType) => ["generate", reportId, type],
   },

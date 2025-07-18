@@ -17,7 +17,9 @@ const userPath = {
     add: "/habit/add",
     edit: "/habit/edit",
     record: {
-      root: (step?: string) => `/habit/record${step ? `?step=${step}` : ""}`,
+      // root: (step?: string) => `/habit/record${step ? `?step=${step}` : ""}`,
+      root: (upload_date?: string, step?: string) =>
+        `/habit/record/${upload_date ? upload_date : new Date().toISOString().slice(0, 10)}${step ? `?step=${step}` : ""}`,
       result: "/habit/record/result",
     },
   },
