@@ -1,10 +1,16 @@
 interface IconMoodNoneProps {
   className?: string;
+  size?: string;
 }
 
-const IconMoodNone = ({ className }: IconMoodNoneProps) => {
+const IconMoodNone = ({ className, size = "21" }: IconMoodNoneProps) => {
   return (
-    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 21 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <circle
         cx="10.5001"
         cy="10.5"

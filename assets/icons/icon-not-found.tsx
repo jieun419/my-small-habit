@@ -1,12 +1,13 @@
 interface IconNotFoundProps {
   className?: string;
+  size?: string;
 }
 
-const IconNotFound = ({ className }: IconNotFoundProps) => {
+const IconNotFound = ({ className, size = "121" }: IconNotFoundProps) => {
   return (
     <svg
-      width="121"
-      height="121"
+      width={size}
+      height={size}
       viewBox="0 0 121 121"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
