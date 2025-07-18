@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { routes } from "@/constants/path";
-import { createClient } from "@/lib/supabase/server";
+import { createServer } from "@/lib/supabase/server";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   const next = searchParams.get("next") ?? routes.userPath.habit.add;
 
   if (token_hash) {
-    const supabase = await createClient();
+    const supabase = await createServer();
     const { error } = await supabase.auth.verifyOtp({
       token_hash,
       type: "magiclink",

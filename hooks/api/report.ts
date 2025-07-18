@@ -1,6 +1,11 @@
-import { useQueryClient, useMutation, useSuspenseQuery } from "@tanstack/react-query";
+import { useQueryClient, useMutation, useSuspenseQuery, useQuery } from "@tanstack/react-query";
 
-import { getReportDay, insertReportDayEmpty, updateReportDay } from "@/api/report";
+import {
+  getReportDay,
+  getReportMonthList,
+  insertReportDayEmpty,
+  updateReportDay,
+} from "@/api/report";
 import { routes } from "@/constants/path";
 import { queryKey } from "@/constants/queryKey";
 import { HabitRecord } from "@/types/habit";
@@ -55,7 +60,27 @@ export const useGetReportDay = (reportId: string) => {
     queryKey: queryKey.report.key(reportId ?? "", "day"),
     queryFn: async () => {
       const { data, error } = await getReportDay({ reportId });
-      if (error) throw new Error("에러 발생!!", error);
+      if (error) throw Error("리포트 Day 에러 발생!!", error);
+      return data;
+    },
+  });
+};
+
+/**
+ * GET report list month 데이터 조회
+ * @param { userId, year, month,}
+ * @returns data
+ */
+export const useGetReportMonthList = ({
+  reportMonth,
+}: {
+  reportMonth: { userId: string; year: number; month: number };
+}) => {
+  return useQuery({
+    queryKey: queryKey.report.list.month(String(reportMonth.year), String(reportMonth.month)),
+    queryFn: async () => {
+      const { data, error } = await getReportMonthList({ reportMonth });
+      if (error) throw Error("리포트 Month 에러 발생!", error);
       return data;
     },
   });

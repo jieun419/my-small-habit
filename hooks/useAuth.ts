@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { handleAuthLogin, handleSignIn, handleSignUp } from "@/api/auth";
-import { getSupabaseUser, getUserStatus } from "@/api/user";
+import { getUserStatus } from "@/api/user";
 import { USER_STATUS_KEY } from "@/constants/auth";
 import { routes } from "@/constants/path";
 import { getAuthErrorMsg } from "@/utils/auth";
@@ -31,11 +31,6 @@ const useAuth = () => {
       password: "",
     });
     setErrorMsg("");
-  };
-
-  const getUserData = async () => {
-    const user = await getSupabaseUser();
-    return user;
   };
 
   const saveUserStatus = async () => {
@@ -117,7 +112,6 @@ const useAuth = () => {
     handleUserLogin,
     handleUserAuthLogin,
     saveUserStatus,
-    getUserData,
   };
 };
 

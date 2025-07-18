@@ -1,11 +1,8 @@
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
-import { getUserStatus } from "@/api/user";
-import { USER_STATUS_KEY } from "@/constants/auth";
 import { routes } from "@/constants/path";
-import { createClient } from "@/lib/supabase/server";
-import LocalStorage from "@/utils/localStorage";
+import { createServer } from "@/lib/supabase/server";
 
 /**
  * 세션 쿠키는 Supabase가 자동으로 관리(프론트에서 별도 쿠키 저장 필요 없음)
@@ -19,7 +16,7 @@ export async function GET(request: Request) {
   const next = requestUrl.searchParams.get("next");
 
   if (code) {
-    const supabase = await createClient();
+    const supabase = await createServer();
     try {
       // 코드를 세션으로 교환
       await supabase.auth.exchangeCodeForSession(code);

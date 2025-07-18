@@ -1,14 +1,22 @@
+import { User } from "@supabase/supabase-js";
+
 import { SUPABASE_DATA_INFO } from "@/constants/auth";
 import { createClient } from "@/lib/supabase/client";
+import { createServer } from "@/lib/supabase/server";
 import { UserInfo } from "@/types/user";
 
 /**
  * GET supabase 유저 정보 조회
  * @returns 유저 정보
  */
-export const getSupabaseUser = async () => {
-  const { data, error } = await createClient().auth.getUser();
-  return { data, error };
+export const getSupabaseUser = async (): Promise<User | null> => {
+  const { data } = await (await createServer()).auth.getUser();
+  return data.user || null;
+};
+
+export const getSupabaseUserClient = async (): Promise<User | null> => {
+  const { data } = await createClient().auth.getUser();
+  return data.user || null;
 };
 
 /**
