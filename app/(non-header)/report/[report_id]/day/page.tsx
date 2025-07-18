@@ -1,7 +1,10 @@
+import { getSupabaseUser } from "@/api/user";
 import ReportDayScreen from "@/features/reportDay";
 
-const ReportDayPage = () => {
-  return <ReportDayScreen />;
+const ReportDayPage = async () => {
+  const user = await getSupabaseUser();
+
+  return <ReportDayScreen userName={user?.user_metadata.name} />;
 };
 
 export default ReportDayPage;
