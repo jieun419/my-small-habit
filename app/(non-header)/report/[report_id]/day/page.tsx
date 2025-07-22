@@ -1,4 +1,4 @@
-import { getSupabaseUser } from "@/api/user";
+import { getSupabaseUser } from "@/api/server/user";
 import ReportDayScreen from "@/features/reportDay";
 
 const ReportDayPage = async () => {

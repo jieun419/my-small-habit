@@ -1,4 +1,4 @@
-import { getSupabaseUser } from "@/api/user";
+import { getSupabaseUser } from "@/api/server/user";
 import HabitRecordScreen from "@/features/habitRecord";
 
 const RecordPage = async ({ params }: { params: Promise<{ upload_date: string }> }) => {

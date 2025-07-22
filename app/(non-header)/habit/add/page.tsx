@@ -1,4 +1,4 @@
-import { getSupabaseUser } from "@/api/user";
+import { getSupabaseUser } from "@/api/server/user";
 import HabitAddScreen from "@/features/habitAdd";
 
 const HabitAddPage = async () => {
