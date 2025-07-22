@@ -1,15 +1,8 @@
+import { User } from "@supabase/supabase-js";
+
 import { SUPABASE_DATA_INFO } from "@/constants/auth";
 import { createClient } from "@/lib/supabase/client";
 import { UserInfo } from "@/types/user";
-
-/**
- * GET supabase 유저 정보 조회
- * @returns 유저 정보
- */
-export const getSupabaseUser = async () => {
-  const { data, error } = await createClient().auth.getUser();
-  return { data, error };
-};
 
 /**
  * INSERT 유저 정보 삽입

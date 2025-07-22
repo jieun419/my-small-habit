@@ -5,7 +5,7 @@ interface TitleProps {
 }
 
 const Title = ({ children, size = "text-xl", color = "text-gray-900" }: TitleProps) => {
-  return <h2 className={`${size} ${color} font-bold`}>{children}</h2>;
+  return <h2 className={`${size} ${color} flex items-center gap-2 font-bold`}>{children}</h2>;
 };
 
 export default Title;

@@ -3,12 +3,9 @@
 import { Button } from "@/components/button";
 import ButttonContain from "@/components/button/butttonContain";
 import ScreenContainer from "@/components/container/screenContainer";
-import FullScreenLoading from "@/components/loading/fullScreenLoading";
 import CircleTitle from "@/components/title/circleTitle";
 import SubTitle from "@/components/title/subTitle";
 import Title from "@/components/title/title";
-import { routes } from "@/constants/path";
-import usePageMove from "@/hooks/usePageMove";
 import { HabitMood } from "@/types/habit";
 import { toast } from "@/utils/toast";
 
@@ -21,14 +18,17 @@ interface RecordStep2Props {
   habitRecord: HabitRecord;
   uploadHabitRecord: () => void;
   upDateHabitRecord: (habitRecord: Partial<HabitRecord>) => void;
+  handleChangeStep: (step: "step1" | "step2") => void;
 }
 
-const RecordStep2 = ({ habitRecord, uploadHabitRecord, upDateHabitRecord }: RecordStep2Props) => {
-  const { handlePageMove } = usePageMove();
-
+const RecordStep2 = ({
+  habitRecord,
+  uploadHabitRecord,
+  upDateHabitRecord,
+  handleChangeStep,
+}: RecordStep2Props) => {
   const fileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const MAX_RETROSPECT_FILE = 4;
-
     const files = e.target.files;
 
     if (files) {
@@ -86,12 +86,7 @@ const RecordStep2 = ({ habitRecord, uploadHabitRecord, upDateHabitRecord }: Reco
       </article>
 
       <ButttonContain>
-        <Button
-          variant="negative"
-          size="medium"
-          onClick={() =>
-            handlePageMove({ path: routes.userPath.habit.record.root("1"), type: "back" })
-          }>
+        <Button variant="negative" size="medium" onClick={() => handleChangeStep("step1")}>
           이전으로
         </Button>
         <Button variant="positive" size="medium" onClick={uploadHabitRecord}>

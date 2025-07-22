@@ -125,7 +125,7 @@ const HabitAddScreen = ({ userId }: HabitAddScreenProps) => {
         <Button
           variant="secondary"
           onClick={() =>
-            handlePageMove({ path: routes.userPath.habit.record.root("1"), type: "replace" })
+            handlePageMove({ path: routes.userPath.habit.record.root(), type: "replace" })
           }>
           오늘 습관 기록하기
         </Button>

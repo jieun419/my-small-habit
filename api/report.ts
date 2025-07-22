@@ -67,3 +67,30 @@ export const getReportDay = async ({
 
   return { data, error };
 };
+
+/**
+ * GET 리포트 리스트데이터 조회
+ * @returns 리포트 리스트 데이터
+ */
+export const getReportMonthList = async ({
+  reportMonth,
+}: {
+  reportMonth: { userId: string; year: number; month: number };
+}): Promise<{ data: HabitReport[] | null; error: QueryError | null }> => {
+  const monthStr = String(reportMonth.month).padStart(2, "0");
+  const start = `${reportMonth.year}-${monthStr}-01T00:00:00`;
+
+  const nextMonth = reportMonth.month === 12 ? 1 : reportMonth.month + 1;
+  const nextYear = reportMonth.month === 12 ? reportMonth.year + 1 : reportMonth.year;
+  const nextMonthStr = String(nextMonth).padStart(2, "0");
+  const end = `${nextYear}-${nextMonthStr}-01T00:00:00`;
+
+  const { data, error } = await createClient()
+    .from(SUPABASE_DATA_INFO.REPORT)
+    .select("*")
+    .eq("user_id", reportMonth.userId)
+    .gte("habit_record->>upload_date", start)
+    .lt("habit_record->>upload_date", end);
+
+  return { data: data, error };
+};

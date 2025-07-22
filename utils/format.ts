@@ -11,3 +11,21 @@ export const formatCurrentDateFull = () => {
 
   return `${year}.${month}.${day} ${weekDay}`;
 };
+
+export const formatCurrentDateToMD = (currentDate: Date) => {
+  const date = new Date(currentDate);
+
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${month}월 ${day}일 `;
+};
+
+export const formatLocaleDateToString = (currentDate: Date) => {
+  return currentDate
+    .toLocaleDateString()
+    .split(".")
+    .map((el) => el.trim().padStart(2, "0"))
+    .slice(0, 3)
+    .join("-");
+};

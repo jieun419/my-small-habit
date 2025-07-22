@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 import {
@@ -25,7 +25,7 @@ const {
  * @returns 습관 목록
  */
 export const useGetHabitList = (userId: string) => {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: queryKey.habit.list.key(userId),
     queryFn: async () => {
       const { data, error } = await getHabitList(userId);

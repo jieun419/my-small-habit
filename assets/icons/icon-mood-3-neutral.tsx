@@ -1,12 +1,13 @@
 interface IconMood3NeutralProps {
   className?: string;
+  size?: string;
 }
 
-const IconMood3Neutral = ({ className }: IconMood3NeutralProps) => {
+const IconMood3Neutral = ({ className, size = "48" }: IconMood3NeutralProps) => {
   return (
     <svg
-      width="48"
-      height="48"
+      width={size}
+      height={size}
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

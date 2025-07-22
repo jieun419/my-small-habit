@@ -1,12 +1,13 @@
 interface IconMood2SlightlySadProps {
   className?: string;
+  size?: string;
 }
 
-const IconMood2SlightlySad = ({ className }: IconMood2SlightlySadProps) => {
+const IconMood2SlightlySad = ({ className, size = "48" }: IconMood2SlightlySadProps) => {
   return (
     <svg
-      width="48"
-      height="48"
+      width={size}
+      height={size}
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -13,7 +13,7 @@ import ButtonSection from "./buttonSection";
 import AIGenerateReportSection from "./generateReportSection";
 import TopContentSection from "./topContentSection";
 
-const ReportDayScreen = () => {
+const ReportDayScreen = ({ userName }: { userName: string }) => {
   const params = useParams();
   const reportId = params.report_id;
 
@@ -38,6 +38,7 @@ const ReportDayScreen = () => {
         <AIGenerateReportSection
           reportId={reportId as string}
           habitRecord={reportData?.habit_record ?? null}
+          userName={userName}
         />
         <ButtonSection />
       </ScreenContainer>

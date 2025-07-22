@@ -9,7 +9,7 @@ const NotFound = ({
   onClick,
 }: {
   title: string;
-  buttonText?: string;
+  buttonText?: string | null;
   onClick?: () => void;
 }) => {
   return (

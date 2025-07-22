@@ -1,10 +1,8 @@
-"use client";
-
+import { getSupabaseUser } from "@/api/server/user";
 import HabitAddScreen from "@/features/habitAdd";
-import { useGetUser } from "@/hooks/useGetUser";
 
-const HabitAddPage = () => {
-  const { user } = useGetUser();
+const HabitAddPage = async () => {
+  const user = await getSupabaseUser();
 
   return <HabitAddScreen userId={user?.id} />;
 };
