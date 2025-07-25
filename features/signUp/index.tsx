@@ -11,12 +11,12 @@ import useAuth from "@/hooks/useAuth";
 import SignForm from "./signForm";
 
 const SignUpScreen = () => {
-  // const { handleUserSignUp, errorMsg, userInfo, setUserInfo } = useAuth();
+  const { handleUserSignUp, errorMsg, userInfo, setUserInfo } = useAuth();
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-  //   setUserInfo({ ...userInfo, [name]: value });
-  // };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+  };
 
   return (
     <ScreenContainer>
@@ -24,12 +24,12 @@ const SignUpScreen = () => {
         <Title size="text-xl">정보를 입력해주세요!</Title>
       </CircleTitle>
 
-      {/* <SignForm
+      <SignForm
         handleUserSignUp={handleUserSignUp}
         userInfo={userInfo}
         handleChange={handleChange}
         errorMsg={errorMsg}
-      /> */}
+      />
 
       <ButttonContain isFixed isColumn>
         <ActionLinkMsg
