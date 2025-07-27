@@ -1,23 +1,46 @@
-import { faArrowRight, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+"use client";
+
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "@/components/button";
 import ScreenContainer from "@/components/container/screenContainer";
 import IconElement from "@/components/icon/iconElement";
 import SubTitle from "@/components/title/subTitle";
+import { routes } from "@/constants/path";
+import usePageMove from "@/hooks/usePageMove";
+import { toast } from "@/utils/toast";
 
-const SttingScreen = () => {
+const SettingScreen = () => {
+  const { handlePageMove } = usePageMove();
+
   return (
     <ScreenContainer>
       <section className="flex w-full flex-col gap-1">
-        <Button variant="tertiary" align="between" isIcon>
+        <Button
+          variant="tertiary"
+          align="between"
+          isIcon
+          onClick={() =>
+            handlePageMove({ path: routes.userPath.setting.habit.edit, type: "push" })
+          }>
           습관 추가/삭제/수정 하기
           <IconElement icon={faChevronRight} className="h-3 w-3" />
         </Button>
-        <Button variant="tertiary" align="between" isIcon>
+        <Button
+          variant="tertiary"
+          align="between"
+          isIcon
+          onClick={() => toast("서비스 준비 중이에요!")}>
           년간 리포트 보기
           <IconElement icon={faChevronRight} className="h-3 w-3" />
         </Button>
-        <Button variant="tertiary" align="between" isIcon>
+        <Button
+          variant="tertiary"
+          align="between"
+          isIcon
+          onClick={() =>
+            handlePageMove({ path: routes.userPath.setting.profile.edit, type: "push" })
+          }>
           기본 정보 수정
           <IconElement icon={faChevronRight} className="h-3 w-3" />
         </Button>
@@ -47,4 +70,4 @@ const SttingScreen = () => {
   );
 };
 
-export default SttingScreen;
+export default SettingScreen;

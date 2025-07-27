@@ -4,6 +4,7 @@ const apiPath = {
     root: "/api/auth",
     callback: "/api/auth/callback",
     confirm: "/api/auth/confirm",
+    status: "/api/auth/status",
   },
   generate: {
     root: "/api/generate",
@@ -45,8 +46,19 @@ const userPath = {
   },
   setting: {
     root: "/setting",
-    profile: "/setting/profile",
+    profile: {
+      root: "/setting/profile",
+      edit: "/setting/profile/edit",
+    },
     logout: "/setting/logout",
+    habit: {
+      root: "/setting/habit",
+      edit: "/setting/habit/edit",
+    },
+    report: {
+      root: "/setting/report",
+      year: "/setting/report/year",
+    },
   },
 };
 

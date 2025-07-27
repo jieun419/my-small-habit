@@ -1,3 +1,5 @@
+"use client";
+
 import LoginScreen from "@/features/login";
 
 const LoginPage = () => {
