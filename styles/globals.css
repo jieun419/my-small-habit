@@ -56,17 +56,16 @@
   --spacing-5xl: 64px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--color-gray-300);
-  color: var(--color-gray-900);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--color-gray-300);
+    color: var(--color-gray-900);
+  }
+
   button {
     margin: 0;
     padding: 0;

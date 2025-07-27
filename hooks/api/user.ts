@@ -1,9 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { getUserStatus } from "@/api/user";
 import { queryKey } from "@/constants/queryKey";
 import { createClient } from "@/lib/supabase/client";
-import LocalStorage from "@/utils/localStorage";
 
 const {
   data: { user },
@@ -23,20 +21,5 @@ export const useGetUser = () => {
     },
     staleTime: 1000 * 60 * 5,
     gcTime: 1000 * 60 * 10,
-  });
-};
-
-/**
- * GET 유저 상태 조회
- * @returns 유저 상태
- */
-export const useGetUserInfoStatus = () => {
-  return useSuspenseQuery({
-    queryKey: queryKey.userInfo.status.key(user?.id || ""),
-    queryFn: async () => {
-      const data = await getUserStatus();
-      LocalStorage.setItem("user_info_status", data);
-      return data;
-    },
   });
 };

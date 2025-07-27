@@ -40,7 +40,7 @@ export async function updateSession(request: NextRequest) {
     !user &&
     !request.nextUrl.pathname.startsWith(routes.commonPath.signup) &&
     !request.nextUrl.pathname.startsWith(routes.commonPath.login) &&
-    !request.nextUrl.pathname.startsWith("/auth")
+    !request.nextUrl.pathname.startsWith(routes.apiPath.auth.root)
   ) {
     // 로그인 페이지로 리다이렉트
     const url = request.nextUrl.clone();

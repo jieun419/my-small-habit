@@ -6,6 +6,7 @@ import { handleAuthLogin, handleSignIn, handleSignUp } from "@/api/auth";
 import { getUserStatus } from "@/api/user";
 import { USER_STATUS_KEY } from "@/constants/auth";
 import { routes } from "@/constants/path";
+import { createClient } from "@/lib/supabase/client";
 import { getAuthErrorMsg } from "@/utils/auth";
 import LocalStorage from "@/utils/localStorage";
 
@@ -33,10 +34,10 @@ const useAuth = () => {
     setErrorMsg("");
   };
 
-  const saveUserStatus = async () => {
-    const data = await getUserStatus();
+  const saveUserStatus = async (userId: string) => {
+    const { data: userStatus } = await getUserStatus(userId);
 
-    LocalStorage.setItem(USER_STATUS_KEY, data);
+    LocalStorage.setItem(USER_STATUS_KEY, userStatus);
   };
 
   /**
@@ -60,9 +61,10 @@ const useAuth = () => {
     }
 
     if (data) {
-      router.push(routes.commonPath.auth.callback);
-      saveUserStatus();
+      if (data.user) saveUserStatus(data.user?.id);
       resetData();
+
+      router.replace(routes.apiPath.auth.callback);
     }
   };
 
@@ -84,9 +86,9 @@ const useAuth = () => {
     }
 
     if (data) {
-      router.push(routes.commonPath.auth.callback);
-      saveUserStatus();
+      if (data.user) saveUserStatus(data.user?.id);
       resetData();
+      router.replace(routes.apiPath.auth.callback);
     }
   };
 
@@ -100,7 +102,11 @@ const useAuth = () => {
       return setErrorMsg(getAuthErrorMsg(error));
     }
     if (data) {
-      saveUserStatus();
+      const {
+        data: { user },
+        error,
+      } = await createClient().auth.getUser();
+      if (user) saveUserStatus(user?.id);
     }
   };
 

@@ -1,10 +1,26 @@
+const apiPath = {
+  root: "/api",
+  auth: {
+    root: "/api/auth",
+    callback: "/api/auth/callback",
+    confirm: "/api/auth/confirm",
+    status: "/api/auth/status",
+  },
+  generate: {
+    root: "/api/generate",
+    report: "/api/generate/report",
+  },
+};
+
 const commonPath = {
   root: "/",
   login: "/login",
   signup: "/signup",
   auth: {
     root: "/auth",
-    callback: "/auth/callback",
+  },
+  error: {
+    root: "/error",
   },
 };
 
@@ -17,7 +33,6 @@ const userPath = {
     add: "/habit/add",
     edit: "/habit/edit",
     record: {
-      // root: (step?: string) => `/habit/record${step ? `?step=${step}` : ""}`,
       root: (upload_date?: string, step?: string) =>
         `/habit/record/${upload_date ? upload_date : new Date().toISOString().slice(0, 10)}${step ? `?step=${step}` : ""}`,
       result: "/habit/record/result",
@@ -31,9 +46,20 @@ const userPath = {
   },
   setting: {
     root: "/setting",
-    profile: "/setting/profile",
+    profile: {
+      root: "/setting/profile",
+      edit: "/setting/profile/edit",
+    },
     logout: "/setting/logout",
+    habit: {
+      root: "/setting/habit",
+      edit: "/setting/habit/edit",
+    },
+    report: {
+      root: "/setting/report",
+      year: "/setting/report/year",
+    },
   },
 };
 
-export const routes = { commonPath, userPath };
+export const routes = { apiPath, commonPath, userPath };

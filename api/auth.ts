@@ -57,7 +57,7 @@ export const handleAuthLogin = async (provider: Provider) => {
         access_type: "offline",
         prompt: "consent",
       },
-      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}${routes.commonPath.auth.callback}`,
+      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}${routes.apiPath.auth.callback}`,
     },
   });
 

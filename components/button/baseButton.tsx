@@ -6,24 +6,24 @@ interface ButtonProps {
   size?: "small" | "medium" | "large";
   align?: "left" | "center" | "right" | "between";
   w?: "w-full" | "w-fit";
+  type?: "button" | "submit" | "reset";
   isIcon?: boolean;
+  disabled?: boolean;
   className?: string;
   onClick?: () => void;
-  disabled?: boolean;
-  type?: "button" | "submit" | "reset";
 }
 
-const Button: React.FC<ButtonProps> = ({
+const BaseButton: React.FC<ButtonProps> = ({
   children,
   variant = "primary",
   size = "medium",
   align = "center",
   w = "w-full",
-  isIcon = false,
-  className = "",
-  onClick,
-  disabled = false,
   type = "button",
+  isIcon,
+  disabled,
+  className,
+  onClick,
 }) => {
   const getVariantClass = () => {
     switch (variant) {
@@ -107,4 +107,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default BaseButton;

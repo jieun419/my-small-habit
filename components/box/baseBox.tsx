@@ -16,8 +16,8 @@ const BaseBox: React.FC<BaseBoxProps> = ({
   size = "medium",
   align = "center",
   w = "w-full",
-  isIcon = false,
-  className = "",
+  isIcon,
+  className,
 }) => {
   const getVariantClass = () => {
     switch (variant) {

@@ -38,8 +38,8 @@ const Toaster = () => {
 
   return (
     <div
-      className={`px-md fixed z-1 w-full transition-all duration-300 ${isVisible ? "translate-y-0 opacity-100" : "opacity-0"} ${combinedClasses} `}>
-      <div className="flex w-full items-center justify-center rounded-md bg-black/55 px-3 py-3 text-sm text-white">
+      className={`px-md fixed z-1 flex w-full justify-center transition-all duration-300 ${isVisible ? "translate-y-0 opacity-100" : "opacity-0"} ${combinedClasses} `}>
+      <div className="flex w-full max-w-[500px] items-center justify-center rounded-md bg-black/55 px-3 py-3 text-sm text-white">
         {msg}
       </div>
     </div>

@@ -85,7 +85,7 @@ const RecordRetrospect = ({
           onBlur={() => upDateHabitRecord({ retrospectText: recordText })}
         />
         <span className="text-xs text-gray-400">
-          {retrospectText.length} / {MAX_RETROSPECT_LENGTH}
+          {recordText.length} / {MAX_RETROSPECT_LENGTH}
         </span>
       </section>
     </div>

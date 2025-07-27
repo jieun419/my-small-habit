@@ -2,23 +2,20 @@
 
 import { useState } from "react";
 
-import { Button } from "@/components/button";
-import ButttonContain from "@/components/button/butttonContain";
 import ScreenContainer from "@/components/container/screenContainer";
 import CircleTitle from "@/components/title/circleTitle";
 import Title from "@/components/title/title";
-import { routes } from "@/constants/path";
 import { useDeleteHabit, useGetHabitList, useInsertHabit, useUpdateHabit } from "@/hooks/api/habit";
 import usePageMove from "@/hooks/usePageMove";
 
 import HabitBox from "./habitBox";
 import HabitCreateForm from "./habitCreateForm";
 
-interface HabitAddScreenProps {
+interface HabitEditScreenProps {
   userId?: string;
 }
 
-const HabitAddScreen = ({ userId }: HabitAddScreenProps) => {
+const HabitEditScreen = ({ userId }: HabitEditScreenProps) => {
   const [createHabit, setCreateHabit] = useState("");
   const [editHabits, setEditHabits] = useState<{ [id: string]: string }>({});
   const [seletcHabitId, setSeletcHabitId] = useState("");
@@ -119,18 +116,8 @@ const HabitAddScreen = ({ userId }: HabitAddScreenProps) => {
           />
         ))}
       </div>
-
-      <ButttonContain isFixed>
-        <Button
-          variant="secondary"
-          onClick={() =>
-            handlePageMove({ path: routes.userPath.habit.record.root(), type: "replace" })
-          }>
-          오늘 습관 기록하기
-        </Button>
-      </ButttonContain>
     </ScreenContainer>
   );
 };
 
-export default HabitAddScreen;
+export default HabitEditScreen;

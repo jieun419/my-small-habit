@@ -20,5 +20,5 @@ export async function GET(req: NextRequest) {
     }
   }
   // 에러 페이지로 리다이렉트
-  return NextResponse.redirect(new URL("/error", req.url));
+  return NextResponse.redirect(new URL(routes.commonPath.error.root, req.url));
 }

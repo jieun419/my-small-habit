@@ -1,7 +1,11 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const MarkDownViewer = ({ markdownContent }: { markdownContent: string }) => {
+interface MarkDownViewerProps {
+  markdownContent: string;
+}
+
+const MarkDownViewer = ({ markdownContent }: MarkDownViewerProps) => {
   return <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdownContent}</ReactMarkdown>;
 };
 

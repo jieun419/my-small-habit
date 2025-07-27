@@ -3,15 +3,13 @@ import { IconNotFound } from "@/assets/icons";
 import { Button } from "../button";
 import SubTitle from "../title/subTitle";
 
-const NotFound = ({
-  title,
-  buttonText,
-  onClick,
-}: {
+interface NotFoundProps {
   title: string;
   buttonText?: string | null;
   onClick?: () => void;
-}) => {
+}
+
+const NotFound = ({ title, buttonText, onClick }: NotFoundProps) => {
   return (
     <div className="my-lg flex flex-col items-center gap-[40px]">
       <IconNotFound className="h-[140px] w-[140px]" />
