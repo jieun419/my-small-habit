@@ -24,7 +24,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html>
-      <body className={` ${roboto.className} sans antialiased`}>
+      <body className={`${roboto.className} sans antialiased`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

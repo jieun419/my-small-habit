@@ -13,6 +13,7 @@ import usePageMove from "@/hooks/usePageMove";
 import { HabitMood } from "@/types/habit";
 import { HabitReport } from "@/types/report";
 import { formatLocaleDateToString } from "@/utils/format";
+import { toast } from "@/utils/toast";
 import { getEmotionIcon } from "@/utils/viewIcon";
 
 import HabitCalenderSection from "./habitCalenderSection";
@@ -120,7 +121,7 @@ const MyPageScreen = ({ userId }: MyPageScreenProps) => {
       </ReportContainer>
 
       <ButttonContain>
-        <Button variant="secondary" size="medium">
+        <Button variant="secondary" size="medium" onClick={() => toast("서비스 준비 중이에요!")}>
           월간 리포트 보기
         </Button>
       </ButttonContain>

@@ -1,5 +1,7 @@
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+
+import { routes } from "@/constants/path";
+import usePageMove from "@/hooks/usePageMove";
 
 import { Button, ButttonContain } from "../button";
 import MainContainer from "../container/mainContainer";
@@ -11,7 +13,7 @@ interface ErrorFallbackProps {
 }
 
 const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
-  const router = useRouter();
+  const { handlePageMove } = usePageMove();
 
   useEffect(() => {
     console.error(error);
@@ -21,7 +23,9 @@ const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
     <MainContainer type="default">
       <NotFound title={error.message} buttonText="다시시도" onClick={resetErrorBoundary} />
       <ButttonContain>
-        <Button variant="secondary" onClick={() => router.push("/")}>
+        <Button
+          variant="secondary"
+          onClick={() => handlePageMove({ path: routes.commonPath.root, type: "replace" })}>
           메인으로 가기
         </Button>
       </ButttonContain>
