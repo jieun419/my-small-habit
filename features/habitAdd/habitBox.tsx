@@ -3,7 +3,7 @@ import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import BaseBox from "@/components/box/baseBox";
 import IconElement from "@/components/icon/iconElement";
 
-interface HobitBoxProps {
+interface HabitBoxProps {
   habit: { id: string; name: string };
   isEdit: boolean;
   seletcHabitId: string;
@@ -13,7 +13,7 @@ interface HobitBoxProps {
   handleDeleteHabit: (id: string) => void;
 }
 
-const HobitBox = ({
+const HabitBox = ({
   habit,
   isEdit,
   seletcHabitId,
@@ -21,7 +21,7 @@ const HobitBox = ({
   handleEditInputChange,
   handleEditToggle,
   handleDeleteHabit,
-}: HobitBoxProps) => {
+}: HabitBoxProps) => {
   const isEditWithSelected = isEdit && seletcHabitId === habit.id;
 
   return (
@@ -63,4 +63,4 @@ const HobitBox = ({
   );
 };
 
-export default HobitBox;
+export default HabitBox;

@@ -1,19 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { Button } from "@/components/button";
-import ButttonContain from "@/components/button/butttonContain";
 import ScreenContainer from "@/components/container/screenContainer";
 import CircleTitle from "@/components/title/circleTitle";
 import Title from "@/components/title/title";
-import { routes } from "@/constants/path";
 import { useDeleteHabit, useGetHabitList, useInsertHabit, useUpdateHabit } from "@/hooks/api/habit";
 import usePageMove from "@/hooks/usePageMove";
 
-import HobitBox from "./hobitBox";
-import HabitCreateForm from "./hobitCreateForm";
+import HabitBox from "./habitBox";
+import HabitCreateForm from "./habitCreateForm";
 
 interface HabitEditScreenProps {
   userId?: string;
@@ -108,7 +104,7 @@ const HabitEditScreen = ({ userId }: HabitEditScreenProps) => {
 
       <div className="flex w-full flex-col gap-2 overflow-y-auto">
         {habitList?.map((habit) => (
-          <HobitBox
+          <HabitBox
             key={habit.id}
             habit={habit}
             isEdit={isEdit}
