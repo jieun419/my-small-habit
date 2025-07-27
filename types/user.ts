@@ -5,3 +5,5 @@ export interface UserInfo {
   password?: string;
   created_at?: string;
 }
+
+export type UserStatus = "initial" | "basic";
