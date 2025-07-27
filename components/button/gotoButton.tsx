@@ -3,10 +3,15 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 
-import Button from "./Button";
+import Button from "./baseButton";
 import IconElement from "../icon/iconElement";
 
-const GotoButton = ({ text, href }: { text: string; href: string }) => {
+interface GotoButtonProps {
+  text: string;
+  href: string;
+}
+
+const GotoButton = ({ text, href }: GotoButtonProps) => {
   const router = useRouter();
 
   return (

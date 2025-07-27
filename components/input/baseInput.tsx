@@ -1,4 +1,5 @@
 interface BaseInputProps {
+  id?: string;
   label?: string;
   placeholder?: string;
   name?: string;
@@ -13,12 +14,13 @@ interface BaseInputProps {
 }
 
 const BaseInput = ({
+  id,
   label,
   placeholder,
   name,
   type = "text",
   value,
-  isRequired = false,
+  isRequired,
   minLength,
   maxLength,
   onChange,
@@ -28,13 +30,13 @@ const BaseInput = ({
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label htmlFor="baseInput" className="text-gray-900">
+        <label htmlFor={id ? id : "baseInput"} className="text-gray-900">
           {label}
           {isRequired && <span className="text-primary">*</span>}
         </label>
       )}
       <input
-        id="baseInput"
+        id={id ? id : "baseInput"}
         type={type}
         name={name}
         placeholder={placeholder}

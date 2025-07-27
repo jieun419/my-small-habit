@@ -1,16 +1,16 @@
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import Button from "./Button";
+import Button from "./baseButton";
 import IconElement from "../icon/iconElement";
 
 interface AddButtonProps {
   w?: "w-full" | "w-fit";
-  onClick?: () => void;
-  className?: string;
   type?: "button" | "submit";
+  className?: string;
+  onClick?: () => void;
 }
 
-const AddButton = ({ w = "w-full", onClick, className, type = "button" }: AddButtonProps) => {
+const AddButton = ({ w = "w-full", type = "button", className, onClick }: AddButtonProps) => {
   return (
     <Button
       variant="tertiary"

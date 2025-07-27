@@ -1,7 +1,7 @@
 interface TitleProps {
+  children: React.ReactNode;
   size?: "text-lg" | "text-xl" | "text-2xl" | "text-3xl";
   color?: "text-white" | "text-primary" | "text-secondary" | "text-gray-500" | "text-gray-900";
-  children: React.ReactNode;
 }
 
 const Title = ({ children, size = "text-xl", color = "text-gray-900" }: TitleProps) => {
