@@ -1,10 +1,10 @@
-import { getUserInfo } from "@/api/server/user";
+import { getSupabaseUser } from "@/api/server/user";
 import ProfileEditScreen from "@/features/profileEdit";
 
 const ProfileEditPage = async () => {
-  const { data } = await getUserInfo();
+  const user = await getSupabaseUser();
 
-  return <ProfileEditScreen userId={data.user_id as string} />;
+  return <ProfileEditScreen userId={user?.id as string} />;
 };
 
 export default ProfileEditPage;
