@@ -1,9 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-import { Button } from "@/components/button";
-import ButttonContain from "@/components/button/butttonContain";
 import ScreenContainer from "@/components/container/screenContainer";
 import CircleTitle from "@/components/title/circleTitle";
 import Title from "@/components/title/title";
@@ -12,14 +8,15 @@ import { useGetHabitList } from "@/hooks/api/habit";
 import usePageMove from "@/hooks/usePageMove";
 import { toast } from "@/utils/toast";
 
+import BottomButtonSection from "./components/common/bottomButtonSection";
 import CurrentDateWithWeather from "./components/step1/currentDateWithWeather";
+import HabitListSection from "./components/step1/habitListSection";
 
 import { HabitRecord } from ".";
 
 interface RecordStep1Props {
   userId?: string;
   habitRecord: HabitRecord;
-  uploadDate: string;
   upDateHabitRecord: (HabitRecord: Partial<HabitRecord>) => void;
   handleChangeStep: (step: "step1" | "step2") => void;
 }
@@ -27,12 +24,9 @@ interface RecordStep1Props {
 const RecordStep1 = ({
   userId,
   habitRecord,
-  uploadDate,
   upDateHabitRecord,
   handleChangeStep,
 }: RecordStep1Props) => {
-  const [colorMap, setColorMap] = useState<string[]>([]);
-
   const { handlePageMove } = usePageMove();
   const { data: habitList = [] } = useGetHabitList(userId || "");
 
@@ -49,22 +43,7 @@ const RecordStep1 = ({
   const handleGotoStep2 = () => {
     if (habitRecord.habits.length === 0) return toast("완료 된 습관을 체크해 주세요!");
     handleChangeStep("step2");
-    // handlePageMove({ path: routes.userPath.habit.record.root(uploadDate, "2") });
   };
-
-  useEffect(() => {
-    if (habitList && habitList?.length > 0) {
-      const habitBgColor = ["bg-yellow-50", "bg-red-50", "bg-green-50", "bg-blue-50"];
-
-      const getRandomColor = () => {
-        const randomIndex = Math.floor(Math.random() * habitBgColor.length);
-        return habitBgColor[randomIndex];
-      };
-
-      const newColors = habitList.map(() => getRandomColor());
-      setColorMap(newColors);
-    }
-  }, [habitList]);
 
   return (
     <ScreenContainer>
@@ -73,38 +52,23 @@ const RecordStep1 = ({
           오늘 어떤 습관을 하셨나요?
         </Title>
       </CircleTitle>
+
       <section className="flex w-full flex-col gap-4">
         <CurrentDateWithWeather />
-        <div className="flex w-full flex-col gap-2">
-          {habitList?.map((habit, idx) => (
-            <Button
-              key={habit.id}
-              variant="normal"
-              className={`${habitRecord.habits.find((el) => el.id === habit.id) ? "bg-gray-50 text-gray-400 line-through" : `${colorMap[idx]} text-gray-900`} `}
-              align="left"
-              size="medium"
-              onClick={() =>
-                habitRecord.habits.find((el) => el.id === habit.id)
-                  ? handleIsNotDoneHabit(habit.id)
-                  : handleIsDoneHabit(habit.id)
-              }>
-              {habit.name}
-            </Button>
-          ))}
-        </div>
+        <HabitListSection
+          habitList={habitList || []}
+          habitRecord={habitRecord}
+          handleIsNotDoneHabit={handleIsNotDoneHabit}
+          handleIsDoneHabit={handleIsDoneHabit}
+        />
       </section>
 
-      <ButttonContain isFixed>
-        <Button
-          variant="tertiary"
-          size="medium"
-          onClick={() => handlePageMove({ path: routes.userPath.mypage.root })}>
-          나중에
-        </Button>
-        <Button variant="secondary" size="medium" onClick={handleGotoStep2}>
-          다음
-        </Button>
-      </ButttonContain>
+      <BottomButtonSection
+        prevText="나중에"
+        nextText="다음"
+        prevOnClick={() => handlePageMove({ path: routes.userPath.mypage.root })}
+        nextOnClickk={handleGotoStep2}
+      />
     </ScreenContainer>
   );
 };
