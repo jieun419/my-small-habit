@@ -6,6 +6,7 @@ interface BaseInputProps {
   type?: "text" | "email" | "password";
   value?: string;
   isRequired?: boolean;
+  isDisabled?: boolean;
   minLength?: number;
   maxLength?: number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -21,6 +22,7 @@ const BaseInput = ({
   type = "text",
   value,
   isRequired,
+  isDisabled,
   minLength,
   maxLength,
   onChange,
@@ -37,6 +39,7 @@ const BaseInput = ({
       )}
       <input
         id={id ? id : "baseInput"}
+        className="input-base"
         type={type}
         name={name}
         placeholder={placeholder}
@@ -45,7 +48,7 @@ const BaseInput = ({
         onBlur={onBlur}
         onKeyDown={onKeyDown}
         required={isRequired}
-        className="input-base"
+        disabled={isDisabled}
         minLength={minLength}
         maxLength={maxLength}
       />

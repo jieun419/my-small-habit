@@ -8,7 +8,7 @@ interface ButtonProps {
   w?: "w-full" | "w-fit";
   type?: "button" | "submit" | "reset";
   isIcon?: boolean;
-  disabled?: boolean;
+  isDisabled?: boolean;
   className?: string;
   onClick?: () => void;
 }
@@ -21,7 +21,7 @@ const BaseButton: React.FC<ButtonProps> = ({
   w = "w-full",
   type = "button",
   isIcon,
-  disabled,
+  isDisabled,
   className,
   onClick,
 }) => {
@@ -101,7 +101,7 @@ const BaseButton: React.FC<ButtonProps> = ({
     .join(" ");
 
   return (
-    <button type={type} className={combinedClasses} onClick={onClick} disabled={disabled}>
+    <button type={type} className={combinedClasses} onClick={onClick} disabled={isDisabled}>
       {children}
     </button>
   );

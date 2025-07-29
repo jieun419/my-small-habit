@@ -70,6 +70,21 @@
     margin: 0;
     padding: 0;
     cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  button:disabled {
+    background-color: var(--color-gray-300);
+    color: var(--color-gray-500);
+    cursor: auto;
+  }
+
+  button:disabled:hover {
+    opacity: 1;
   }
 
   input:focus,
@@ -81,10 +96,26 @@
   textarea::placeholder {
     color: var(--color-gray-400);
   }
+}
 
-  button:disabled {
-    background-color: var(--color-gray-300);
-    color: var(--color-gray-500);
+@layer components {
+  .input-base {
+    width: 100%;
+    border-radius: 0.375rem;
+    border: 1px solid var(--color-gray-400);
+    padding: 0.5rem;
+  }
+
+  .input-base:disabled {
+    border: 1px solid var(--color-gray-200);
+    background: var(--color-gray-100);
+  }
+
+  .circle-primary-icon {
+    background: var(--color-primary);
+    height: 11px;
+    width: 11px;
+    border-radius: 100px;
   }
 }
 
@@ -135,17 +166,9 @@
   }
 }
 
-@utility input-base {
-  @apply w-full rounded-md border border-gray-400 p-2;
-}
-
-@utility circle-primary-icon {
-  @apply bg-primary h-[11px] w-[11px] rounded-full;
-}
-
 /* 공통 버튼 기본 스타일 */
 @utility button-base {
-  @apply relative flex w-full cursor-pointer rounded-md px-4 py-3 text-sm transition-colors duration-200 hover:opacity-85;
+  @apply relative flex w-full rounded-md px-4 py-3 text-sm disabled:bg-gray-300;
 }
 
 /* 버튼 변형 스타일들 */

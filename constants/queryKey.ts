@@ -1,14 +1,11 @@
 import { ReportType } from "@/types/report";
 
 export const queryKey = {
-  user: {
-    key: (userId: string) => ["user", userId],
-  },
   /* 유저 정보 */
   userInfo: {
-    key: (userId: string) => ["user_info", userId],
+    key: ["user_info"],
     status: {
-      key: (userId: string) => ["user_info_status", userId],
+      key: ["user_info_status"],
     },
   },
   /* 습관 */

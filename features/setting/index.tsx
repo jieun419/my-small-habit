@@ -1,63 +1,13 @@
-"use client";
-
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
-import { Button } from "@/components/button";
 import ScreenContainer from "@/components/container/screenContainer";
-import IconElement from "@/components/icon/iconElement";
-import SubTitle from "@/components/title/subTitle";
-import { routes } from "@/constants/path";
-import usePageMove from "@/hooks/usePageMove";
-import { toast } from "@/utils/toast";
+
+import SettingSection from "./components/settingSection";
+import ThemeSection from "./components/themeSection";
 
 const SettingScreen = () => {
-  const { handlePageMove } = usePageMove();
-
   return (
     <ScreenContainer>
-      <section className="flex w-full flex-col gap-1">
-        <Button
-          variant="tertiary"
-          align="between"
-          isIcon
-          onClick={() =>
-            handlePageMove({ path: routes.userPath.setting.habit.edit, type: "push" })
-          }>
-          습관 추가/삭제/수정 하기
-          <IconElement icon={faChevronRight} className="h-3 w-3" />
-        </Button>
-        <Button
-          variant="tertiary"
-          align="between"
-          isIcon
-          onClick={() => toast("서비스 준비 중이에요!")}>
-          년간 리포트 보기
-          <IconElement icon={faChevronRight} className="h-3 w-3" />
-        </Button>
-        <Button
-          variant="tertiary"
-          align="between"
-          isIcon
-          onClick={() =>
-            handlePageMove({ path: routes.userPath.setting.profile.edit, type: "push" })
-          }>
-          기본 정보 수정
-          <IconElement icon={faChevronRight} className="h-3 w-3" />
-        </Button>
-      </section>
-      <section className="mt-10 flex w-full flex-col gap-1 border-t border-solid border-gray-300 pt-10">
-        <div className="flex w-full items-center justify-between gap-1">
-          <SubTitle size="text-base">테마 선택</SubTitle>
-          <div className="flex gap-1">
-            <Button variant="tertiary" size="small" className="whitespace-nowrap">
-              다크
-            </Button>
-            <Button variant="secondary" size="small" className="whitespace-nowrap">
-              라이트
-            </Button>
-          </div>
-        </div>
-      </section>
+      <SettingSection />
+      <ThemeSection />
 
       <section className="absolute bottom-10 mt-10 flex w-full flex-col gap-1">
         <p className="text-center text-sm text-gray-500">
