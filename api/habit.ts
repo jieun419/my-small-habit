@@ -88,7 +88,8 @@ export const insertHabitRecord = async ({
   const { data, error } = await createClient()
     .from(SUPABASE_DATA_INFO.HABIT_RECORD)
     .insert({ ...record, user_id: userId })
-    .select("*"); // post와 동시에 데이터 가져오기
+    .select("*")
+    .single();
 
-  return { data: data?.[0] ?? null, error };
+  return { data: data ?? null, error };
 };
