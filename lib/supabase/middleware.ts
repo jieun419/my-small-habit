@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+import { getUserInfo } from "@/api/server/user";
 import { routes } from "@/constants/path";
 
 const publicRoutes = ["/", "/login", "/signup"]; // 로그인 후 접근 불가
@@ -49,6 +50,13 @@ export async function updateSession(request: NextRequest) {
   } else if (user && publicRoutes.includes(request.nextUrl.pathname)) {
     // 로그인 후 홈 페이지로 리다이렉트
     const url = request.nextUrl.clone();
+
+    const { data } = await getUserInfo();
+
+    if (data && data.status === "basic") {
+      url.pathname = routes.userPath.habit.record.root();
+    }
+
     url.pathname = routes.userPath.habit.add;
     return NextResponse.redirect(url);
   }

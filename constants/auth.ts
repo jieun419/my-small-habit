@@ -1,6 +1,5 @@
 export const USER_STATUS = {
   INITIAL: "initial",
-  SETUP: "setup",
   BASIC: "basic",
 } as const;
 
