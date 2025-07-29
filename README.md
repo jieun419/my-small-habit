@@ -19,7 +19,7 @@
 |------|------|------|
 |<img width="200" alt="my-small-habit vercel app_habit_add" src="https://github.com/user-attachments/assets/cbed5cbc-97ba-4692-b515-499b231b4f6d" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29" src="https://github.com/user-attachments/assets/2704e957-8c79-47f0-8785-d93ccc9b5ed8" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29 (1)" src="https://github.com/user-attachments/assets/825c42b5-74ac-42f8-9aa8-72559db315ca" />|
 
-|습관 등록|그날 습관 기록 - 1|
+|당일 리포트 생성 로딩 화면|AI 기반 리포트 생성|
 |------|------|
 |<img width="200" alt="loading" src="https://github.com/user-attachments/assets/2eed8862-4765-49a8-865f-9ba7b4fa60d6" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29 (3)" src="https://github.com/user-attachments/assets/b50041f2-6317-44c9-8ee6-c02930d307de" />|
 
