@@ -1,7 +1,10 @@
+import Title from "@/components/title/title";
 import { HabitMood } from "@/types/habit";
 import { HabitReport } from "@/types/report";
-import { formatLocaleDateToString } from "@/utils/format";
+import { formatCurrentDateToMD, formatLocaleDateToString } from "@/utils/format";
 import { getEmotionIcon } from "@/utils/viewIcon";
+
+import DateResetButton from "./dateResetButton";
 
 interface WeekCalenderProps {
   currentDate: Date;
@@ -30,31 +33,37 @@ const WeekCalender = ({ currentDate, reportMonthList, handleSelectedDate }: Week
   };
 
   return (
-    <div className="mx-auto flex w-full items-center justify-center overflow-hidden">
-      <div
-        className="flex w-full items-center justify-center transition-all"
-        style={{ gap: `${DAY_GAP}px` }}>
-        {getWeekDate().map((day, idx) => {
-          const weekDay = day.toLocaleDateString("ko-KR", { weekday: "short" });
-          const isSelected = day.toDateString() === currentDate.toDateString();
+    <div className="gap-md flex w-full max-w-[320px] flex-col items-center">
+      <div className="relative flex w-full justify-center">
+        <Title color="text-gray-900">{formatCurrentDateToMD(currentDate)}</Title>
+        <DateResetButton onClick={() => handleSelectedDate(new Date())} />
+      </div>
+      <div className="mx-auto flex w-full items-center justify-center overflow-hidden">
+        <div
+          className="flex w-full items-center justify-center transition-all"
+          style={{ gap: `${DAY_GAP}px` }}>
+          {getWeekDate().map((day, idx) => {
+            const weekDay = day.toLocaleDateString("ko-KR", { weekday: "short" });
+            const isSelected = day.toDateString() === currentDate.toDateString();
 
-          return (
-            <button
-              key={idx}
-              className={`relative flex flex-col items-center gap-2 rounded-md p-0 px-2 py-1 ${isSelected ? "bg-gray-100" : "hover:bg-gray-50"} `}
-              onClick={() => handleSelectedDate(day)}>
-              <span className="text-sm font-bold text-gray-900">{weekDay}</span>
-              <span>
-                {getEmotionIcon({
-                  iconMoodType: reportMonthList.find(
-                    (el) => el.habit_record?.upload_date === formatLocaleDateToString(day),
-                  )?.habit_record?.mood as HabitMood,
-                  size: "20",
-                })}
-              </span>
-            </button>
-          );
-        })}
+            return (
+              <button
+                key={idx}
+                className={`relative flex flex-col items-center gap-2 rounded-md p-0 px-2 py-1 ${isSelected ? "bg-gray-100" : "hover:bg-gray-50"} `}
+                onClick={() => handleSelectedDate(day)}>
+                <span className="text-sm font-bold text-gray-900">{weekDay}</span>
+                <span>
+                  {getEmotionIcon({
+                    iconMoodType: reportMonthList.find(
+                      (el) => el.habit_record?.upload_date === formatLocaleDateToString(day),
+                    )?.habit_record?.mood as HabitMood,
+                    size: "20",
+                  })}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

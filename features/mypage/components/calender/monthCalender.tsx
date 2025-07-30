@@ -6,6 +6,8 @@ import { HabitMood } from "@/types/habit";
 import { HabitReport } from "@/types/report";
 import { getEmotionIcon } from "@/utils/viewIcon";
 
+import DateResetButton from "./dateResetButton";
+
 interface MonthCalenderProps {
   currentDate: Date;
   reportMonthList: HabitReport[];
@@ -88,11 +90,7 @@ const MonthCalender = ({
             <IconElement icon={faChevronRight} />
           </button>
         </div>
-        <button
-          className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400"
-          onClick={() => handleChangeMonth("reset")}>
-          <span className="text-xs text-gray-400">초기화</span>
-        </button>
+        <DateResetButton onClick={() => handleChangeMonth("reset")} />
       </div>
 
       <div className="mb-2 grid w-full grid-cols-7 items-center justify-center">
