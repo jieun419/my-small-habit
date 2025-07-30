@@ -4,6 +4,7 @@
 - **`Project duration` :** 2025.06 - 진행 중
 - **`Link` :** [배포 사이트](https://jieun-portfolio.vercel.app/)
 - **`Stack` :** Next.js, TypeScript, Tailwind CSS, Supabase
+- **`Troubleshooting` :** [트러블 슈팅](https://jieun-portfolio-re.vercel.app/mySmallHabit)
 
 ## 설명
 - 취업 공백기가 길어지면서 미뤄진는 습관과 자존감 회복을 위해 시작된 습관 관리 서비스입니다.<br>
