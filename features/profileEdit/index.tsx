@@ -2,7 +2,7 @@ import ScreenContainer from "@/components/container/screenContainer";
 import CircleTitle from "@/components/title/circleTitle";
 import Title from "@/components/title/title";
 
-import EditForm from "./editForm";
+import EditForm from "./components/editForm";
 
 interface ProfileEditScreenProps {
   userId: string;
