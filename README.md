@@ -7,8 +7,8 @@
 
 ## 설명
 - 취업 공백기가 길어지면서 미뤄진는 습관과 자존감 회복을 위해 시작된 습관 관리 서비스입니다.<br>
-- 습관을 주기적으로, 완벽하게 지키지 않아도 **“하루에 하나만 해도 괜찮다”** 는 메세지를 담아 사용자들이 부담 없이 지속적으로 실천할 수 있도록 기획했습니다.<br><br>
-**지속적으로 업데이트하고 있습니다.**
+- 습관을 주기적으로, 완벽하게 지키지 않아도 **“하루에 하나만 해도 괜찮다”** 는 메세지를 담아 사용자들이 부담 없이 지속적으로 실천할 수 있도록 기획했습니다.<br>
+**지속적으로 개선/업데이트하고 있습니다.**
 
 ## 주요 기능
 - [x] 회원가입 및 로그인 (이메일 / 소셜 기반)
@@ -18,6 +18,15 @@
 - [ ] 리포트 이메일 발송 및 이미지 저장 기능
 - [x] 사용자 기본 정보 수정 기능
 - [ ] PWA 도입
+- [ ] 다크모드 지원
+- [ ] 월간/연간 리포트 지원
+
+## 개선 필요한 점
+- [ ] 리포트 생성 시 로딩 시간
+- [ ] 페이지 전환 시간 지연 최적화
+- [ ] 회원가입 보안 강화 (유효성 검사 등, 또는 소셜 로그인만 지원하기)
+  - [ ] 유저 정보 수정 시 비밀번호 수정 기능 추가할지
+- [ ] 리포트 생성 에러 대응
   
 ## 작업 화면 (현재 사이트와 스타일이 다소 다를 수 있습니다.)
 |로그인|회원가입|
@@ -26,12 +35,16 @@
 
 |습관 등록|그날 습관 기록 - 1|그날 습관 기록 - 2|
 |------|------|------|
-|<img width="200" alt="my-small-habit vercel app_habit_add" src="https://github.com/user-attachments/assets/cbed5cbc-97ba-4692-b515-499b231b4f6d" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29" src="https://github.com/user-attachments/assets/2704e957-8c79-47f0-8785-d93ccc9b5ed8" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29 (1)" src="https://github.com/user-attachments/assets/825c42b5-74ac-42f8-9aa8-72559db315ca" />|
+|<img width="200" alt="my-small-habit vercel app_habit_add" src="https://github.com/user-attachments/assets/cbed5cbc-97ba-4692-b515-499b231b4f6d" />|<img width="750" height="1502" alt="my-small-habit vercel app_mypage (3)" src="https://github.com/user-attachments/assets/2d7ce836-5743-4bf5-8d24-b5a118c8b662" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29 (1)" src="https://github.com/user-attachments/assets/825c42b5-74ac-42f8-9aa8-72559db315ca" />|
 
 |당일 리포트 생성 로딩 화면|AI 기반 리포트 생성|
 |------|------|
-|<img width="200" alt="loading" src="https://github.com/user-attachments/assets/2eed8862-4765-49a8-865f-9ba7b4fa60d6" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29 (3)" src="https://github.com/user-attachments/assets/b50041f2-6317-44c9-8ee6-c02930d307de" />|
+|<img width="750" height="1502" alt="my-small-habit vercel app_mypage" src="https://github.com/user-attachments/assets/7c996784-de32-4d94-a913-43c01ce2626c" />|<img width="750" height="1502" alt="my-small-habit vercel app_mypage (2)" src="https://github.com/user-attachments/assets/f0ad828e-28e4-4534-b67f-193aeb287ef3" />|
 
 |마이페이지 - 주간|마이페이지 - 주간|마이페이지 - 월간|
 |------|------|------|
 |<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29 (4)" src="https://github.com/user-attachments/assets/57e82597-b9f9-49a6-a737-5d83625db1ce" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29 (5)" src="https://github.com/user-attachments/assets/86c9cb97-12d4-46ed-8fcb-35847d9928ad" />|<img width="200" alt="my-small-habit vercel app_habit_record_2025-07-29 (7)" src="https://github.com/user-attachments/assets/61301ae7-14df-48d3-9c18-fbcd97691888" />
+
+|설정 페이지|유저정보 수정|
+|------|------|
+|<img width="750" height="1502" alt="my-small-habit vercel app_mypage (4)" src="https://github.com/user-attachments/assets/843696b1-cf75-48a0-b3f7-61c026fb6e23" />|<img width="750" height="1502" alt="my-small-habit vercel app_mypage (5)" src="https://github.com/user-attachments/assets/72256751-bfc6-408d-ac15-e79a312affdc" />|
