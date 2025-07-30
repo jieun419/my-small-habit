@@ -45,7 +45,6 @@ export const useInsertHabit = () => {
   const { mutate, isError, isSuccess } = useMutation({
     mutationFn: async (habit: { user_id?: string; name: string }) => await insertHabit(habit),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: queryKey.habit.key(user?.id || "") });
       queryClient.invalidateQueries({ queryKey: queryKey.habit.list.key(user?.id || "") });
     },
     onError: (error) => {
@@ -68,11 +67,10 @@ export const useInsertHabit = () => {
 export const useUpdateHabit = () => {
   const queryClient = useQueryClient();
 
-  const { mutate, isError, isSuccess } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: async (habit: { user_id?: string; name: string; id: string }) =>
       await updateHabit(habit),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: queryKey.habit.key(user?.id || "") });
       queryClient.invalidateQueries({ queryKey: queryKey.habit.list.key(user?.id || "") });
     },
     onError: (error) => {
@@ -83,8 +81,6 @@ export const useUpdateHabit = () => {
 
   return {
     mutateUpdateHabit: mutate,
-    isUpdateHabitError: isError,
-    isUpdateHabitSuccess: isSuccess,
   };
 };
 

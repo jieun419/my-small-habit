@@ -67,7 +67,6 @@ const HabitRecordScreen = ({ userId, uploadDate }: HabitRecordScreenProps) => {
         <RecordStep1
           userId={userId}
           habitRecord={habitRecord}
-          uploadDate={uploadDate}
           upDateHabitRecord={upDateHabitRecord}
           handleChangeStep={handleChangeStep}
         />

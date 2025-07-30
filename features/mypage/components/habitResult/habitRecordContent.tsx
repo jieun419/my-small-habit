@@ -2,7 +2,7 @@ import BaseBox from "@/components/box/baseBox";
 import Title from "@/components/title/title";
 import { HabitRecord } from "@/types/habit";
 
-const HabitRecordSection = ({ habitRecord }: { habitRecord: HabitRecord }) => {
+const HabitRecordContent = ({ habitRecord }: { habitRecord: HabitRecord }) => {
   return (
     <>
       <div>
@@ -29,4 +29,4 @@ const HabitRecordSection = ({ habitRecord }: { habitRecord: HabitRecord }) => {
   );
 };
 
-export default HabitRecordSection;
+export default HabitRecordContent;

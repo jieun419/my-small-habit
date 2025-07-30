@@ -24,6 +24,19 @@ const HabitBox = ({
 }: HabitBoxProps) => {
   const isEditWithSelected = isEdit && seletcHabitId === habit.id;
 
+  const buttonItems = [
+    {
+      type: "edit",
+      icon: faPencil,
+      onClick: (habitId: string) => handleEditToggle(habitId),
+    },
+    {
+      type: "delete",
+      icon: faTrash,
+      onClick: (habitId: string) => handleDeleteHabit(habitId),
+    },
+  ];
+
   return (
     <BaseBox
       variant="normal"
@@ -37,27 +50,17 @@ const HabitBox = ({
         onChange={(e) => handleEditInputChange(habit.id, e.target.value)}
         className="roundded-none w-full border-b border-gray-900 bg-transparent text-gray-900 disabled:border-none"
         disabled={!isEditWithSelected}
-        onBlur={() => {
-          if (isEditWithSelected) handleEditToggle(habit.id);
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" && isEditWithSelected) {
-            handleEditToggle(habit.id);
-          }
-        }}
         maxLength={30}
       />
       <div className="flex items-center gap-1">
-        <button
-          className="aspect-square cursor-pointer px-2"
-          onClick={() => handleEditToggle(habit.id)}>
-          <IconElement icon={faPencil} className="w-3 text-gray-600" />
-        </button>
-        <button
-          className="aspect-square cursor-pointer rounded-full px-2"
-          onClick={() => handleDeleteHabit(habit.id)}>
-          <IconElement icon={faTrash} className="w-3 text-gray-900" />
-        </button>
+        {buttonItems.map((item) => (
+          <button
+            key={item.type}
+            className="aspect-square cursor-pointer px-2"
+            onClick={() => item.onClick(habit.id)}>
+            <IconElement icon={item.icon} className="w-3 text-gray-600" />
+          </button>
+        ))}
       </div>
     </BaseBox>
   );

@@ -1,5 +1,3 @@
-"use client";
-
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import {
