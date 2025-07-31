@@ -64,6 +64,8 @@
   body {
     background: var(--color-gray-300);
     color: var(--color-gray-900);
+    padding-bottom: 10px;
+    overscroll-behavior: none; /* ios 스크롤 튕김 효과 제거 */
   }
 
   button {
