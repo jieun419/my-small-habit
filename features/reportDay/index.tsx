@@ -9,9 +9,9 @@ import FullScreenLoading from "@/components/loading/fullScreenLoading";
 import MarkDownViewer from "@/components/mdx/markDownViewer";
 import { useGetReportDay } from "@/hooks/api/report";
 
-import ButtonSection from "./buttonSection";
-import AIGenerateReportSection from "./generateReportSection";
-import TopContentSection from "./topContentSection";
+import ButtonSection from "./components/buttonSection";
+import AIGenerateReportSection from "./components/generateReportSection";
+import TopContentSection from "./components/topContentSection";
 
 const ReportDayScreen = ({ userName }: { userName: string }) => {
   const params = useParams();

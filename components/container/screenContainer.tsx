@@ -5,7 +5,8 @@ interface ScreenContainerProps {
 
 const ScreenContainer = ({ children, isBottomButton }: ScreenContainerProps) => {
   return (
-    <div className={`flex w-full flex-col items-center ${isBottomButton ? "pb-[100px]" : ""}`}>
+    <div
+      className={`flex w-full flex-col items-center overflow-y-auto ${isBottomButton ? "pb-[100px]" : ""}`}>
       {children}
     </div>
   );

@@ -1,18 +1,28 @@
+"use client";
+
 import { Button } from "@/components/button";
 import BaseInput from "@/components/input/baseInput";
 import ErrorMsg from "@/components/text/errorMsg";
-import { UserInfo } from "@/types/user";
+import useAuth from "@/hooks/useAuth";
 
-interface LoginFormProps {
-  userInfo: UserInfo;
-  errorMsg: string;
-  handleUserLogin: (e: React.FormEvent<HTMLFormElement>) => void;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+const SignForm = () => {
+  const { handleUserSignUp, errorMsg, userInfo, setUserInfo } = useAuth();
 
-const LoginForm = ({ userInfo, errorMsg, handleUserLogin, handleChange }: LoginFormProps) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+  };
+
   return (
-    <form onSubmit={handleUserLogin} className="flex w-full flex-col gap-4">
+    <form onSubmit={handleUserSignUp} className="flex w-full flex-col gap-4">
+      <BaseInput
+        label="이름"
+        placeholder="이름을 입력해주세요."
+        name="name"
+        value={userInfo.name}
+        onChange={handleChange}
+        isRequired
+      />
       <BaseInput
         label="이메일"
         placeholder="이메일을 입력해주세요."
@@ -30,13 +40,15 @@ const LoginForm = ({ userInfo, errorMsg, handleUserLogin, handleChange }: LoginF
         value={userInfo.password}
         onChange={handleChange}
         isRequired
+        minLength={8}
+        maxLength={16}
       />
       {errorMsg && <ErrorMsg errorMsg={errorMsg} />}
       <Button variant="secondary" size="medium" type="submit">
-        로그인
+        회원가입
       </Button>
     </form>
   );
 };
 
-export default LoginForm;
+export default SignForm;

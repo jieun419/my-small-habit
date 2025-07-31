@@ -1,5 +1,3 @@
-import React from "react";
-
 interface SubTitleProps {
   children: React.ReactNode;
   color?: "text-white" | "text-primary" | "text-secondary" | "text-gray-500" | "text-gray-900";

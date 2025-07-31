@@ -46,7 +46,7 @@ const RecordStep1 = ({
   };
 
   return (
-    <ScreenContainer>
+    <ScreenContainer isBottomButton>
       <CircleTitle>
         <Title color="text-gray-900" size="text-xl">
           오늘 어떤 습관을 하셨나요?
@@ -64,9 +64,9 @@ const RecordStep1 = ({
       </section>
 
       <BottomButtonSection
-        prevText="나중에"
-        nextText="다음"
-        prevOnClick={() => handlePageMove({ path: routes.userPath.mypage.root })}
+        prevText="나중에 기록"
+        nextText="다음으로"
+        prevOnClick={() => handlePageMove({ path: routes.userPath.mypage.root, type: "replace" })}
         nextOnClickk={handleGotoStep2}
       />
     </ScreenContainer>

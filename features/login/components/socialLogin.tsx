@@ -1,13 +1,12 @@
-import { Provider } from "@supabase/supabase-js";
+"use client";
 
 import { IconGoogle } from "@/assets/icons";
 import { Button } from "@/components/button";
+import useAuth from "@/hooks/useAuth";
 
-interface SocialLoginProps {
-  handleUserAuthLogin: (provider: Provider) => void;
-}
+const SocialLogin = () => {
+  const { handleUserAuthLogin } = useAuth();
 
-const SocialLogin = ({ handleUserAuthLogin }: SocialLoginProps) => {
   return (
     <div className="mt-7 flex w-full flex-col gap-3">
       <div className="flex items-center justify-center gap-2 text-center">
@@ -16,7 +15,7 @@ const SocialLogin = ({ handleUserAuthLogin }: SocialLoginProps) => {
 
       <Button variant="white" size="medium" isIcon onClick={() => handleUserAuthLogin("google")}>
         <IconGoogle className="h-5 w-5" />
-        Google 로그인
+        Google 간편 로그인
       </Button>
     </div>
   );
