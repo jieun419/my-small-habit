@@ -13,8 +13,9 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "My Small Habit",
-  description: "My Small Habit",
+  title: "My Small Habit - 나의 작은 습관",
+  description: "습관을 주기적으로, 완벽하게 지키지 않아도, 하루에 하나만 해도 괜찮아요",
+  manifest: "/manifest.json",
 };
 
 export default async function RootLayout({
