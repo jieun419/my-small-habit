@@ -3,6 +3,7 @@
   "short_name": "My Small Habit",
   "description": "습관을 주기적으로, 완벽하게 지키지 않아도, 하루에 하나만 해도 괜찮아요",
   "start_url": "/",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#333333",
   "theme_color": "#333333",

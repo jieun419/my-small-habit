@@ -5,7 +5,6 @@ const withPWA = require("next-pwa")({
   register: true,
   skipWaiting: true,
   scope: "/",
-  start_url: "/",
 });
 
 const nextConfig: NextConfig = {
