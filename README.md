@@ -25,7 +25,7 @@
 - [x] 습관 및 리포트 보기 (AI 기반 맞춤 조언)
 - [ ] 리포트 이메일 발송 및 이미지 저장 기능
 - [x] 사용자 기본 정보 수정 기능
-- [ ] PWA 도입
+- [x] PWA 도입
 - [ ] 다크모드 지원
 - [ ] 월간/연간 리포트 지원
 
@@ -33,11 +33,13 @@
 ## 개선 필요한 점
 - [ ] 리포트 생성 시 로딩 시간
 - [ ] 페이지 전환 시간 지연 최적화
+- [ ] 로그아웃/탈퇴 기능
 - [ ] 회원가입 보안 강화 (유효성 검사 등, 또는 소셜 로그인만 지원하기)
   - [ ] 유저 정보 수정 시 비밀번호 수정 기능 추가할지
 - [ ] 리포트 생성 에러 대응
 - [ ] 유저 status 업데이트 및 상태에 맞게 페이지 전환
-- [ ] 인터렉션 요소 추가 
+- [ ] 인터렉션 요소 추가
+- [ ] 모바일 환경 대응
   
 ## 작업 화면 (현재 사이트와 스타일이 다소 다를 수 있습니다.)
 |로그인|회원가입|
@@ -59,3 +61,10 @@
 |설정 페이지|유저정보 수정|
 |------|------|
 |<img width="200" alt="my-small-habit vercel app_mypage (4)" src="https://github.com/user-attachments/assets/843696b1-cf75-48a0-b3f7-61c026fb6e23" />|<img width="200" alt="my-small-habit vercel app_mypage (5)" src="https://github.com/user-attachments/assets/72256751-bfc6-408d-ac15-e79a312affdc" />|
+
+----
+
+|pwa 도입|pwa 도입 - 화면 표시|
+|------|------|
+|<img width="200" alt="my-small-habit vercel pwa 1" src="https://github.com/user-attachments/assets/b1aa135b-27e8-4c85-ab41-9f7b49471fcb" />|<img width="200" alt="my-small-habit vercel pwa 2" src="https://github.com/user-attachments/assets/17a4d324-2cbe-4c5a-87c1-9a884fcabd64" />|
+
