@@ -1,14 +1,14 @@
 {
-  "name": "PWA manifest",
-  "short_name": "PWA manifest",
-  "description": "PWA manifest",
+  "name": "My Small Habit",
+  "short_name": "My Small Habit",
+  "description": "My Small Habit",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/images/icon.jpg",
+      "src": "/image/icon.jpg",
       "sizes": "512x512",
       "type": "image/jpg"
     }
