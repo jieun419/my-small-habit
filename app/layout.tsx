@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "My Small Habit - 나의 작은 습관",
   description: "습관을 주기적으로, 완벽하게 지키지 않아도, 하루에 하나만 해도 괜찮아요",
   manifest: "/manifest.json",
+  viewport: {
+    width: "device-width",
+    initialScale: 1.0,
+    userScalable: false,
+  },
 };
 
 export default async function RootLayout({
