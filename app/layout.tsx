@@ -21,6 +21,16 @@ export const metadata: Metadata = {
     initialScale: 1.0,
     userScalable: false,
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "My Small Habit",
+    startupImage: [
+      {
+        url: "/image/splashscreen.png",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
