@@ -1,5 +1,6 @@
 import ScreenContainer from "@/components/container/screenContainer";
 
+import LogoutButton from "./components/logoutButton";
 import SettingSection from "./components/settingSection";
 import ThemeSection from "./components/themeSection";
 
@@ -15,6 +16,7 @@ const SettingScreen = () => {
           <br />
           이뤘다면 이미 잘하고 있어요 :)
         </p>
+        <LogoutButton />
       </section>
     </ScreenContainer>
   );
