@@ -89,6 +89,12 @@
     opacity: 1;
   }
 
+  input,
+  textarea {
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+  }
+
   input:focus,
   textarea:focus {
     outline: none;
