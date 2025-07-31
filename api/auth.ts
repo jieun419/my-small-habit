@@ -1,7 +1,9 @@
 import { Provider } from "@supabase/supabase-js";
+import { redirect } from "next/navigation";
 
 import { routes } from "@/constants/path";
 import { createClient } from "@/lib/supabase/client";
+import { toast } from "@/utils/toast";
 
 /**
  * 회원가입
@@ -62,6 +64,17 @@ export const handleAuthLogin = async (provider: Provider) => {
   });
 
   return { data, error };
+};
+
+/**
+ * 로그아웃
+ * @returns error
+ */
+export const handleLogout = async () => {
+  const { error } = await createClient().auth.signOut();
+  if (error) return toast("예기치 못한 에러가 발생했습니다!");
+
+  return redirect("/");
 };
 
 export const getSupabase = async () => {

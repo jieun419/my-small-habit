@@ -56,8 +56,8 @@ const RecordStep2 = ({
       </article>
 
       <BottomButtonSection
-        prevText="나중에"
-        nextText="다음"
+        prevText="이전으로"
+        nextText="기록 완료!"
         prevOnClick={() => handleChangeStep("step1")}
         nextOnClickk={uploadHabitRecord}
       />
