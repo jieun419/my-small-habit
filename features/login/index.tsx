@@ -7,6 +7,7 @@ import { routes } from "@/constants/path";
 
 import LoginForm from "./components/loginForm";
 import SocialLogin from "./components/socialLogin";
+import TesterLogin from "./components/testerLogin";
 
 const LoginScreen = () => {
   return (
@@ -19,6 +20,8 @@ const LoginScreen = () => {
       <SocialLogin />
 
       <ButttonContain isFixed isColumn>
+        <TesterLogin />
+
         <ActionLinkMsg
           href={routes.commonPath.signup}
           msg="계정이 없으신가요?"

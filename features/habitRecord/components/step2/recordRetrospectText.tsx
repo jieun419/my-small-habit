@@ -18,7 +18,11 @@ const RecordRetrospectText = ({ retrospectText, upDateHabitRecord }: RecordRetro
       <textarea
         name="retrospect_text"
         id="retrospect_text"
-        className="h-full min-h-[200px] w-full resize-none rounded-md border border-solid border-gray-500 p-2 text-sm"
+        className="h-full min-h-[200px] w-full scale-[0.875] resize-none rounded-md border border-solid border-gray-500 p-2"
+        style={{
+          transformOrigin: "top left",
+          WebkitTextSizeAdjust: "100%",
+        }}
         placeholder="그날의 회고를 작성해 보세요."
         minLength={0}
         maxLength={MAX_RETROSPECT_LENGTH}
