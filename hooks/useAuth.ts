@@ -74,13 +74,11 @@ const useAuth = () => {
         created_at: data?.user?.created_at,
         status: "initial",
       };
-      const { data: userInfo } = await insertUserInfo(userInfoData);
+      await insertUserInfo(userInfoData);
 
-      if (userInfo) {
-        saveUserStatus(data.user?.id ?? "");
-        resetData();
-        router.replace(routes.commonPath.login);
-      }
+      saveUserStatus(data.user?.id ?? "");
+      resetData();
+      router.replace(routes.commonPath.login);
     }
   };
 
@@ -96,6 +94,29 @@ const useAuth = () => {
     }
 
     const { data, error } = await handleSignIn({ uesrInfo: userInfo });
+
+    if (error) {
+      return setErrorMsg(getAuthErrorMsg(error));
+    }
+
+    if (data) {
+      if (data.user) saveUserStatus(data.user?.id);
+      resetData();
+      router.replace(routes.apiPath.auth.callback);
+    }
+  };
+
+  /**
+   * 테스트 로그인
+   * @param e 로그인 폼 이벤트
+   */
+  const handleUserTesterLogin = async () => {
+    const { data, error } = await handleSignIn({
+      uesrInfo: {
+        email: "crg1050@naver.com",
+        password: "qwer1234!!",
+      },
+    });
 
     if (error) {
       return setErrorMsg(getAuthErrorMsg(error));
@@ -134,6 +155,7 @@ const useAuth = () => {
     setUserInfo,
     handleUserSignUp,
     handleUserLogin,
+    handleUserTesterLogin,
     handleUserAuthLogin,
     saveUserStatus,
   };
